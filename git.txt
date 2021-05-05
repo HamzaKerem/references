@@ -1,0 +1,38 @@
+Quick Notes:
+Remote repository: Most up to date and trusted repo.
+Commit: Create a checkpoint in the local repository. Push to
+remote repo. as neccessary.
+Branch: Copy of a repo. at a certain point.
+Master Branch: Main commit (checkpoint) history.
+
+Basics:
+initialize git: git init
+show status: git status
+show log: git log
+
+Adding files and Commits:
+add file: git add <file> 
+create commit: git commit -m "made ... changes"
+
+Branching:
+switch to new branch: git checkout <branch>
+create new branch and switch: git checkout -b <branch>
+
+Merging:
+merge <branch> with current branch: git merge <branch>
+
+Pushing to a remote repo:
+1) Create a new repo on github
+2) git remote add origin https://github.com/<USER>/<REPO>
+# A 'remote' called "origin" is a URL to another repository
+3) git push -u origin master
+
+Workflow Example:
+git init # initialize
+git add readme.md # add file
+git commit -m "Added readme" # commit changes
+git checkout -b safe_branch # create new branch and switch to it
+git add file.txt # add new file
+git commit -m "Added file.txt" # commit changes
+git checkout master # switch back to master branch
+git merge safe_branch # merge safe_branch with master branch 

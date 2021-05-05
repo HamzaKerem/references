@@ -1,0 +1,46 @@
+Misc. Notes:
+Uses a lot of vim bindings: hjkl, /, ?, ..., G, g
+man cmus, man cmus-tutorial
+Remember to :save
+:add when in view 1.
+:clear to clear songs
+
+Navigation:
+Navigate through views: 1-7 keys
+View shortcuts, settings and filters: 7
+Navigate through songs: jk
+Select track on the top / bottom: g / G
+Change to directory or song mode: TAB
+When directory selected, show subdirs: space   
+find track: /<track> (press enter and 'n' to view next match:
+?: backwards search)
+
+Basic Song manipulation:
+Volume up / down: = / - (no Ctrl)
+Seek a min ahead or back: < / >	
+and skip forward or back: hl
+play next: b
+play previous z
+
+Que manipulation:
+Cycle through different options for que: m 
+(Setting appears on the left of '|' on the bottom right)
+Toggles (right of '|'): [C]ontinue, [r]epeat, [s]huffle, 
+[f]ollow 
+Que view: 4
+Add to que: e
+In que view (4) change order of tracks: p / P
+In que view (4) remove tracks: shift-D  
+
+Playlists:
+Playlist view: 3
+add track to playlist: y
+change order: p / P
+remove: shift-D (remove track or playlist, depending on what's selected)
+play from playlist mode: shift-M or press enter on playlist track '
+create new playlist: pl-create <name> (see pl-* commands)
+change default (*) playlist: select playlist + space 
+
+Command Line:
+Add songs: :add ~/Music
+Remove songs: :clear

@@ -1,0 +1,99 @@
+Quick notes:
+This program is very important for becoming a true super user.
+Set bash to vi mode: set -o vi
+see: vimtutor and :help user-manual
+
+Basics:
+hjklm: movement
+e: move to the end of the word
+w: move to the start of the next word
+b: move to the start of the previous word 
+Command Syntax: [Count]<Operator><Motion>
+
+Operators:
+x: delete
+u: undo last command
+r<char>: replace 
+c<motion>: change (delete and enter insert mode; 'ce' is useful)
+
+Motions:
+w: to start of next word
+e: to start of current word
+b: to start of previous word
+$: to the end of the line
+^: to the start of the sentence
+0: to the start of the line
+
+Advanced Motions:
+o: open a line below the cursor and enter insert mode
+O: open a line above the cursor and enter insert mode
+a: append (where the cursor is)
+A: move cursor to the end of line and append
+J: join lines
+Ctrl-U (in insert mode): kill line up to cursor
+(equivilant to d0)
+
+File Status:
+Ctrl+G: show location
+gg: move to the start of the file
+G: to the end of the file
+<Line Number>G: move to line number
+
+Searching:
+/<search word>: search forwards
+?<search word>: search backwards
+(press enter; n: show next, N: show previous)
+%: find matching parenthesis, bracket, etc. 
+(cursor must be on one of those) 
+
+Subsitituion:
+s/<search>/<replace>: search and replace first instance on the
+current line
+s/<search>/<replace>/g: search and replace all instance on the
+current line; 'g' stands for global.
+<line number>,<line number>s/<s>/<r>/g: search within given line numbers
+%s/<search>/<replace>/g: search and replace all instance in the file 
+%s/<search>/<replace>/g: search and replace all instance in the file and 
+prompt user for confirmation 
+
+External Command Execution and File Manipulation:
+:!<CMD>: execute external command
+:w <File>: save current file as <File>
+:r <File>: insert contents of a file.
+:r !<CMD>: insert output of an external command. 
+
+Visual Mode:
+v: enter visual mode, select lines of text via operators (hjkl, w, b, etc.)
+v + d: delete selected lines
+v + :w <File>: write the selected portion of the file as <File>
+
+Replace Mode:
+R: enter replace mode (which is like insert mode, but every 
+typed character deletes an existing character)
+
+Copy and Paste:
+y: yank (use Visual Mode to utilize yanking)
+p: paste
+
+Set commands:
+:set ic: set ignore case for search 
+:set hls: set highlight search
+:set is: set partial-matching search
+:set no<CMD>: disable previously set command
+
+Command Completion:
+:<CMD> CTRL-D: show completion menu (ESC to cancel)
+
+Editing multiple files:
+vim file1 file2 file3: open up 3 files for editing
+:bn: buffer next (edit next file)
+:bp: buffer previous (edit previous file)
+:buffers: view list of files
+:buffer N: switch to buffer #N
+:e <File>: open <file> for editing 
+
+Page up and down:
+CTRL-b: Page up 
+CTRL-f: Page down 
+CTRL-u: Page up 1/2 screen
+CTRL-d: Page down 1/2 screen
