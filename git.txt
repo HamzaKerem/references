@@ -24,6 +24,18 @@ create new branch and switch: git checkout -b <branch>
 Merging:
 merge <branch> with current branch: git merge <branch>
 
+Merge Conflicts:
+
+a = 1 # Non conflicting
+<<<< HEAD
+b = 2 # Conflicting changes #1
+=====
+b = 3 # Conflicting changes #2 
+>>>> 57123c...... (commit hash)
+c = 4 # Non conflicting
+d = 5 # Non conflicting
+....
+
 Pushing to a remote repo:
 1) Create a new repo on github
 2) git remote add origin https://github.com/<USER>/<REPO>
