@@ -49,11 +49,12 @@ Pushing to a remote repo:
 # OR
 git push --set-upstream origin <branch> # Push unknown branch
 
-
 Pulling:
 Get the most recent commits from a remote repo: git pull
 
 Configuration:
+See configurations: git config --list
+Save credentials: git config --global credential.helper store 
 Edit ~/.gitconfig: git config --global --edit
 
 Workflow Example:
