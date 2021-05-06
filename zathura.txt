@@ -1,0 +1,21 @@
+Quick Notes:
+Must install submodules for document types separately.
+(i.e. zathura-pdf-poppler)
+Uses vim bindings.
+
+Basic Movement:
+Move up / down: j / k
+Move up / down a page: J / K
+Page up / down: Ctrl-U / Ctrl-D
+
+Zooming in / out
+Zoom in / out: - / = (No Shift)
+
+Misc.:
+Nightmode: Ctrl-R
+Multi-page mode: d
+
+Configuration:
+config file: ~/.config/zathura/zathurarc
+map keys in config: map <KEY> <CMD> (i.e. map p print)
+See: man zathurarc
