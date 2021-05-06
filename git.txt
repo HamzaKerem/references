@@ -1,7 +1,7 @@
 Quick Notes:
 Remote repository: Most up to date and trusted repo.
-Commit: Create a checkpoint in the local repository. Push to
-remote repo. as neccessary.
+Commit: Create a checkpoint in the local repository. 
+Push: Send commit to remote repo. as neccessary.
 Branch: Copy of a repo. at a certain point.
 Master Branch: Main commit (checkpoint) history.
 
@@ -13,9 +13,12 @@ show log: git log
 Adding files and Commits:
 add file: git add <file> 
 create commit: git commit -m "made ... changes"
+Note: Files need to be added before being commited in 
+order for git to be able to track them. The '-a' flag in 
+git commit -am "..." allows for automatically adding modified files.
 
 Branching:
-switch to new branch: git checkout <branch>
+switch to branch: git checkout <branch>
 create new branch and switch: git checkout -b <branch>
 
 Merging:
@@ -29,6 +32,9 @@ Pushing to a remote repo:
 
 Pulling:
 Get the most recent commits from a remote repo: git pull
+
+Configuration:
+Edit ~/.gitconfig: git config --global --edit
 
 Workflow Example:
 git init # initialize
