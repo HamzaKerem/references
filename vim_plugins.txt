@@ -1,0 +1,11 @@
+- Have .vimrc in ~/
+- Install vim-plug: 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+- source file: source %
+- Install Plugins: PlugInstall
+Note: start the files with the plugin calls, then proceed with set ...
+
+- install: python3-dev cmake
+- run: ~/.vim/plugged/YouCompleteMe/install.py --clang-completer

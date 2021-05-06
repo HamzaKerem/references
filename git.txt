@@ -5,6 +5,7 @@ Push: Send commit to remote repo. as neccessary.
 Branch: Copy of a repo. at a certain point.
 Master Branch: Main commit (checkpoint) history.
 HEAD: Pointer to the current branch.
+Pull Request: Propose to merge the created branch.
 
 Basics:
 initialize git: git init
@@ -20,7 +21,7 @@ git commit -am "..." allows for automatically adding modified files.
 
 Branching:
 show branches: git branch
-(Note: Header is marked with a '*')
+(Note: Head is marked with a '*')
 delete branch: git branch -D <branch>
 switch to branch: git checkout <branch>
 create new branch and switch: git checkout -b <branch>
@@ -44,7 +45,10 @@ Pushing to a remote repo:
 1) Create a new repo on github
 2) git remote add origin https://github.com/<USER>/<REPO>
 # A 'remote' called "origin" is a URL to another repository
-3) git push -u origin master
+3) git push -u origin <branch> # Push known branch
+# OR
+git push --set-upstream origin <branch> # Push unknown branch
+
 
 Pulling:
 Get the most recent commits from a remote repo: git pull
