@@ -27,6 +27,9 @@ Pushing to a remote repo:
 # A 'remote' called "origin" is a URL to another repository
 3) git push -u origin master
 
+Pulling:
+Get the most recent commits from a remote repo: git pull
+
 Workflow Example:
 git init # initialize
 git add readme.md # add file
