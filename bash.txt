@@ -8,6 +8,7 @@ printf -- '--' # The first '--' tells the command not
 # to interpret the following '--' as an option indicator 
 
 Process Substitution:
+<(cmd) / >(cmd)
 
 Regex Test:
 regex=^'lol'*
@@ -36,3 +37,6 @@ echo "${str:0:5}" # Get substring starting at
 Recursive Globbing:
 shopt -s globstar # enable recurive globbing
 ls ~/** # recursively search
+
+Here Strings:
+read var <<< "TEXT" # Doesn't create a subshell! 
