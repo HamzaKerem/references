@@ -12,7 +12,8 @@ Process Substitution:
 
 Regex Test:
 regex=^'lol'*
-[[ "$str" =~ $regex ]] && ... # regex is not quoated!
+[[ "$str" =~ $regex ]] && ... # regex is not quoated! Not portable.
+# Use a case condition for portability.
 
 Element Count:
 echo "$#" # Pos-param count
@@ -33,6 +34,7 @@ Command Grouping:
 Get Substring:
 echo "${str:0:5}" # Get substring starting at
 # index 0 and extending 5 characters
+echo "$str" | cut -b 1 # get Nth character of string
 
 Recursive Globbing:
 shopt -s globstar # enable recurive globbing
