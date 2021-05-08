@@ -1,0 +1,11 @@
+youtube-dl [OPTION] <URL> # where <URL> is the URL of a single video,
+# a playlist of videos, or an entire channel
+
+Options:
+-F: show available formats
+-f <format code>: download in given format
+-f bestaudio: only download audio
+-x: download the entire video, then convert to audio
+--write-thumbnail --skip-download: download thumbnail only
+--write-info-json: download metadata along with the video
+-i: ignore errors including "Not available in your country"
