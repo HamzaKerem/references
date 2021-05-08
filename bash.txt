@@ -1,0 +1,38 @@
+Quick Notes:
+Pipelines create subshells.
+Using #!/usr/bin/env NAME makes the shell search for the 
+first match of NAME in $PATH.
+
+Options:
+printf -- '--' # The first '--' tells the command not 
+# to interpret the following '--' as an option indicator 
+
+Process Substitution:
+
+Regex Test:
+regex=^'lol'*
+[[ "$str" =~ $regex ]] && ... # regex is not quoated!
+
+Element Count:
+echo "$#" # Pos-param count
+echo "${#arr[@]}" # Array element count
+echo "${#str}" # String length count
+
+Accessing All Elements:
+echo "$@" # All pos-params
+echo "${arr[@]" # All array elements
+
+Increment / Decrement Integer:
+((++var)) / ((--var)) # not portable! 
+# sh version: var=$((var+1))
+
+Command Grouping:
+{ cmd1; cmd2; cmd3; } 
+
+Get Substring:
+echo "${str:0:5}" # Get substring starting at
+# index 0 and extending 5 characters
+
+Recursive Globbing:
+shopt -s globstar # enable recurive globbing
+ls ~/** # recursively search
