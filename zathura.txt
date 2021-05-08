@@ -7,13 +7,16 @@ Basic Movement:
 Move up / down: j / k
 Move up / down a page: J / K
 Page up / down: Ctrl-U / Ctrl-D
+Skip Ahead: space
 
 Zooming in / out
 Zoom in / out: - / = (No Shift)
+Adjust windows: a / s
 
 Misc.:
 Nightmode: Ctrl-R
 Multi-page mode: d
+Display contents menu: TAB
 
 Configuration:
 config file: ~/.config/zathura/zathurarc
