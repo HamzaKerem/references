@@ -1,0 +1,13 @@
+Quick Notes:
+Use sh, which is usually linked to dash,
+for speed and minimalism.
+Use printf instead of echo.
+Redirect error messages to stderr.
+sh forces you to use UNIX utilities such as
+cut, paste, etc. unlike bash, which offers bloated built-in
+solutions.
+
+Test command exit status:
+if ! cmd > /dev/null; then
+	....
+fi
