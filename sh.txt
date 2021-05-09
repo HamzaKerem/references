@@ -11,3 +11,47 @@ Test command exit status:
 if ! cmd > /dev/null; then
 	....
 fi
+
+Expansion operators:
+${varname:-word} : if varname not null return its value, if null
+return word
+
+Tests:
+[ ... && ... || ... ] # syntax error!
+[ ... -a ... -o ... ] # OK!
+[ ... ] && [ ... ] || [ ... ] # Best practice! 
+Note: Always quote variables!
+
+Case Statement:
+case $1 in
+-f) .... ;; 
+-a) .... ;; 
+-l) .... ;; 
+ *) .... >&2; exit 1;;
+esac
+Note: Very useful for shell pattern matching (not regex). 
+
+Pos-Params:
+shift: shift pos-params down by 1 ($# decreases by 1 each time)
+getopts: simplifies option processing
+Note: Use shift and a case statment to carry out instructions
+for each pos-param.
+
+Functions:
+func(){
+	...
+	echo "$result"
+	return $? # expilicitly return exit status (best practice)
+}
+
+if func arg1 arg2 > /dev/null # evaulate function's return value (0 = true)
+then
+..
+fi
+
+output="$(func arg1 arg2)" # get output of "$result"
+
+Command Syntax:
+IFS=: echo "$IFS" # IFS is assinged to be ':' for the following command
+# on the line, goes back to its regular form once next line is being
+# interpreted
