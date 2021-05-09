@@ -6,6 +6,8 @@ Redirect error messages to stderr.
 sh forces you to use UNIX utilities such as
 cut, paste, etc. unlike bash, which offers bloated built-in
 solutions.
+~ is not portable, use "$HOME" instead.
+Use mktemp to create temporary files.
 
 Test command exit status:
 if ! cmd > /dev/null; then
