@@ -2,10 +2,11 @@ Quick Notes:
 Pipelines create subshells.
 Using #!/usr/bin/env NAME makes the shell search for the 
 first match of NAME in $PATH.
+Use eval to replace regular shell substitution.
+#!/bin/bash -e exits with an error on any command that fails.
 
 Options:
-printf -- '--' # The first '--' tells the command not 
-# to interpret the following '--' as an option indicator 
+printf -- '--' # The first '--' indicates the end of options.
 
 Process Substitution:
 <(cmd) / >(cmd)
@@ -24,12 +25,20 @@ Accessing All Elements:
 echo "$@" # All pos-params
 echo "${arr[@]" # All array elements
 
+PIDs:
+echo "$$" # PID
+declare -p BASHPID # PID
+echo "$!" # PID of job placed in the background
+echo "$PPID" # PPID
+Note: $$ is interpreted before execution. See: BASHPID.
+
 Increment / Decrement Integer:
 ((++var)) / ((--var)) # not portable! 
 # sh version: var=$((var+1))
 
 Command Grouping:
-{ cmd1; cmd2; cmd3; } 
+{ cmd1; cmd2; cmd3; } # Code Block (same process)
+( cmd1; cmd2; cmd3; ) # Subshell (seperate process)  
 
 Get Substring:
 echo "${str:0:5}" # Get substring starting at
@@ -42,3 +51,6 @@ ls ~/** # recursively search
 
 Here Strings:
 read var <<< "TEXT" # Doesn't create a subshell! 
+
+Special Variables:
+echo "$-" # indicates special shell options set 

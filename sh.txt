@@ -8,6 +8,8 @@ cut, paste, etc. unlike bash, which offers bloated built-in
 solutions.
 ~ is not portable, use "$HOME" instead.
 Use mktemp to create temporary files.
+Subshell does NOT mean subprocess. i.e.:
+echo $$ && echo $(exec exec echo $$) && ( echo $$; ) && { echo $$; echo $(echo $$); }
 
 Test command exit status:
 if ! cmd > /dev/null; then
@@ -32,6 +34,16 @@ case $1 in
  *) .... >&2; exit 1;;
 esac
 Note: Very useful for shell pattern matching (not regex). 
+
+Pattern Matching Using For Loop:
+
+# executed such as ./script.sh '*' '[a-z]' '[A-Z]' '*.mp3'
+
+for pattern in "$@"; do
+	for file in "$dir/$pattern"; do # expands to /home/josh/* , /home/josh/[a-z] , ....
+		....
+	done
+done
 
 Pos-Params:
 shift: shift pos-params down by 1 ($# decreases by 1 each time)

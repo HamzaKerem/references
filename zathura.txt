@@ -17,6 +17,8 @@ Misc.:
 Nightmode: Ctrl-R
 Multi-page mode: d
 Display contents menu: TAB
+Set bookmark: m<NUMBER>
+Go to bookmark: '<NUMBER>
 
 Configuration:
 config file: ~/.config/zathura/zathurarc
