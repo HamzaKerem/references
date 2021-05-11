@@ -54,3 +54,13 @@ read var <<< "TEXT" # Doesn't create a subshell!
 
 Special Variables:
 echo "$-" # indicates special shell options set 
+
+Use interactive programs in scripts:
+cat << EOF | fdisk /dev/sda
+o
+n
+p
+
++200M
+...
+EOF
