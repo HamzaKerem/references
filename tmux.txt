@@ -1,0 +1,32 @@
+tmux is a terminal multiplexer, allowing for users to multiplex
+multiple virtual sessions.
+
+The prefix allows for tmux to start interpreting the rest of the keys 
+pressed as commands. Otherwise it wouldn't be able to tell if the 
+user pressed the keys for tmux or another program. ctrl-b is the 
+default prefix.
+
+Basics:
+Create new session: tmux new -s my_session [-n window_name]
+exit session: exit
+detach from (aka pause) session: prefix d
+list sessions: tmux ls
+attach to (aka start) session: tmux attach [-t my_session]
+Create instance in the background: tmux new -s my_session2 -d
+kill session: tmux kill-session -t my_session
+
+Windows:
+Create new window: prefix c
+Rename window: prefix ,
+Move to next / previous window: prefix n / prefix p
+Move to window at index: prefix <index> 
+(where index starts from 0 by default)
+Find window by name: prefix f
+Display visual menu of windows: prefix w
+Ask to kill a window: prefix &
+
+Panes:
+Split vertically: prefix %
+Split horizontally: prefix "
+Cycle through panes: prefix o
+Move around panes: prefix UP/DOWN/LEFT/RIGHT
