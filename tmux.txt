@@ -30,3 +30,19 @@ Split vertically: prefix %
 Split horizontally: prefix "
 Cycle through panes: prefix o
 Move around panes: prefix UP/DOWN/LEFT/RIGHT
+Resize panes to default layouts: prefix space
+Ask to kill a pane: prefix x
+Display pane numbers: prefix q
+
+Commands:
+Enter command mode: prefix :
+(Note: command mode uses vim bindings)
+Launch new window and program: new-window -n processes "top" 
+('q' will exit top and the window)
+
+Misc.
+See keybindings: prefix ?
+
+Configuration:
+System wide config: /etc/tmux.conf
+User config: ~/.tmux.conf

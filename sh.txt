@@ -69,3 +69,8 @@ Command Syntax:
 IFS=: echo "$IFS" # IFS is assinged to be ':' for the following command
 # on the line, goes back to its regular form once next line is being
 # interpreted
+
+Configuration:
+Note: bash reads .bashrc when you start it interactively, but dash and ksh, among others, do not. 
+Instead you set the environment variable ENV to a filename that should be loaded when an interactive shell is started
+export ENV=~/.shrc in ~/.profile
