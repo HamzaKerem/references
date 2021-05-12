@@ -58,9 +58,10 @@ func(){
 	return $? # expilicitly return exit status (best practice)
 }
 
+If statements:
 if func arg1 arg2 > /dev/null # evaulate function's return value (0 = true)
 then
-..
+: # ':' is the do nothing operator
 fi
 
 output="$(func arg1 arg2)" # get output of "$result"
@@ -74,3 +75,9 @@ Configuration:
 Note: bash reads .bashrc when you start it interactively, but dash and ksh, among others, do not. 
 Instead you set the environment variable ENV to a filename that should be loaded when an interactive shell is started
 export ENV=~/.shrc in ~/.profile
+
+Eval:
+dir='my dir'
+my_opt='-l -s -a -v'
+eval ls "$my_opt" \"$dir\" # quotes need to be escaped since whitespace involved
+

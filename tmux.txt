@@ -46,3 +46,10 @@ See keybindings: prefix ?
 Configuration:
 System wide config: /etc/tmux.conf
 User config: ~/.tmux.conf
+set prefix: set -g prefix C-a
+('-g' is for global, 'C-' is for CTRL)
+unbind key: unbind C-b
+Source file (apply changes): (in cmd mode) source-file <config file>
+Set delay time: set -sg escape-time 1
+Set window index to start at 1: set -g base-index 1
+Set pane index to start at 1: setw -g pane-base-index 1
