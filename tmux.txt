@@ -12,6 +12,7 @@ exit session: exit
 detach from (aka pause) session: prefix d
 list sessions: tmux ls
 attach to (aka start) session: tmux attach [-t my_session]
+('-t' for target)
 Create instance in the background: tmux new -s my_session2 -d
 kill session: tmux kill-session -t my_session
 
@@ -39,6 +40,7 @@ Enter command mode: prefix :
 (Note: command mode uses vim bindings)
 Launch new window and program: new-window -n processes "top" 
 ('q' will exit top and the window)
+Exit command mode: ^C 
 
 Misc.
 See keybindings: prefix ?
@@ -53,3 +55,25 @@ Source file (apply changes): (in cmd mode) source-file <config file>
 Set delay time: set -sg escape-time 1
 Set window index to start at 1: set -g base-index 1
 Set pane index to start at 1: setw -g pane-base-index 1
+set binding for command and display message: bind r source-file 
+~/.tmux.conf; display "Reloaded!" 
+set binding without prefix: bind-key -n C-<Key> <CMD>
+(Note: '-n' indicates that the prefix is not required)
+Send prefix to other programs when pressed twice:
+bind C-a send-prefix
+bind keys for splitting pane vertically: bind v split-window -v 
+bind keys for splitting pane horizontally: bind h split-window -h 
+resize panes: bind -r H/J/K/L resize-pane -L/D/U/R 5
+('-r' indicates repeatable)
+set status: set -g status-right/left "P: #P W:#I"
+('#P' is pane index, '#I' is window index)
+
+Scripting:
+new session, name window, start in the background: tmux new-session -s "$sesh" -n editor -d
+new window: tmux new-window -t "$sesh" -n music 
+split window of window 0, pane 0 horizontally; new pane is 10% of the window:
+tmux split-window -v -p 10 -t "$sesh":0.0
+send commands to window 0, pane 0; finish with a carriage return:
+tmux send-keys -t "$sesh":0.0 "cd $dir; clear;" C-m
+select a window:tmux select-window -t "$sesh":0
+attach session:tmux attach -t "$sesh"

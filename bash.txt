@@ -64,3 +64,6 @@ p
 +200M
 ...
 EOF
+
+Set locale to be default (resulting in English time and date):
+export LC_ALL=C

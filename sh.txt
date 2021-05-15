@@ -81,3 +81,7 @@ dir='my dir'
 my_opt='-l -s -a -v'
 eval ls "$my_opt" \"$dir\" # quotes need to be escaped since whitespace involved
 
+POSIX Compliance:
+Use 'shellcheck' to confirm compliance.
+'which' is not POSIX compliant. Use 'command -v' instead.
+See: XDG Base Directory specification
