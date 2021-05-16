@@ -1,3 +1,4 @@
+Notes:
 tmux is a terminal multiplexer, allowing for users to multiplex
 multiple virtual sessions.
 
@@ -5,6 +6,8 @@ The prefix allows for tmux to start interpreting the rest of the keys
 pressed as commands. Otherwise it wouldn't be able to tell if the 
 user pressed the keys for tmux or another program. ctrl-b is the 
 default prefix.
+
+When binding keys, 'C-' is used for CTRL, 'Escape' for ESC
 
 Basics:
 Create new session: tmux new -s my_session [-n window_name]
@@ -41,6 +44,9 @@ Enter command mode: prefix :
 Launch new window and program: new-window -n processes "top" 
 ('q' will exit top and the window)
 Exit command mode: ^C 
+Exit prefix mode: ESC
+kill session: kill-session
+(Note: commands can easily get binded to a key using 'bind')
 
 Misc.
 See keybindings: prefix ?
@@ -50,13 +56,13 @@ System wide config: /etc/tmux.conf
 User config: ~/.tmux.conf
 set prefix: set -g prefix C-a
 ('-g' is for global, 'C-' is for CTRL)
-unbind key: unbind C-b
+unbind key (doesn't have to be prefix): unbind C-b
 Source file (apply changes): (in cmd mode) source-file <config file>
 Set delay time: set -sg escape-time 1
 Set window index to start at 1: set -g base-index 1
 Set pane index to start at 1: setw -g pane-base-index 1
 set binding for command and display message: bind r source-file 
-~/.tmux.conf; display "Reloaded!" 
+~/.tmux.conf\; display "Reloaded!" 
 set binding without prefix: bind-key -n C-<Key> <CMD>
 (Note: '-n' indicates that the prefix is not required)
 Send prefix to other programs when pressed twice:
@@ -77,3 +83,26 @@ send commands to window 0, pane 0; finish with a carriage return:
 tmux send-keys -t "$sesh":0.0 "cd $dir; clear;" C-m
 select a window:tmux select-window -t "$sesh":0
 attach session:tmux attach -t "$sesh"
+Select a configuration file to load: tmux -f myconf.conf attach
+(Note: look into 'tmuxinator' for generating more complex work environments.)
+
+Buffer Manipulation:
+enter copy mode: :copy-mode or prefix [ (by default) 
+(Note: Copy Mode is Vim's Visual mode equivilant)
+exit copy mode: C-c
+Start selecting: space
+Complete selecting and save buffer: enter
+paste buffer: :paste-buffer or prefix ] (by default)
+capture pane: :capture-pane 
+show buffer: tmux show-buffer
+save buffer to file: tmux capture-pane && tmux save-buffer <FILE>
+list buffers: :list-buffers
+(Note: tmux can store multiple buffers)
+choose buffer: :choose-buffer
+
+Look into:
+- Change keys for space and enter in copy mode
+
+Workflows:
+pop out pane (move to its indivual window): prefix !
+join pane: :join-pane -s <Window_Number>
