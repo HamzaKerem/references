@@ -88,7 +88,9 @@ typed character deletes an existing character)
 
 Copy and Paste:
 y: yank (use Visual Mode to utilize yanking)
-p: paste
+p: put / paste after cursor
+P: put / paste before cursor
+xp: character twiddling / swapping
 (Note: Vim registers are able to hold upto 26 clipboards.)
 
 Set commands:
@@ -116,9 +118,13 @@ CTRL-u: Page up 1/2 screen
 CTRL-d: Page down 1/2 screen
 
 Intermediate Commands:
-execute last change command: .
-Toggle case: ~
+.: execute last change command
+~: Toggle case
 q: record keystrokes / stop recording
 @<char>: execute macro
-See digraphs: :digraphs
-Print digraph: CTRL-K<2 digraph characters>
+:digraphs: See digraphs
+CTRL-K<2 digraph characters>: Print digraph
+m<char>: mark the cursor location as mark <char> (numbers work too)
+`<char>: go to mark
+'<char>: go to marked line (utilize it with other operators such as 'd')
+:marks: see marks 
