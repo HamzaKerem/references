@@ -110,6 +110,12 @@ vim file1 file2 file3: open up 3 files for editing
 :buffers: view list of files
 :buffer N: switch to buffer #N
 :e <File>: open <file> for editing 
+:view <file>: view <file> in read-only mode
+:autowrite: auto-write before editing next or previous buffer
+:args: show current file
+:first, :last, :next, :previous: self-explanatory (use when: vim file1 file2 file3)
+(short for :writenext -> :wn)
+CTRL-^: switch to editing alternate file
 
 Page up and down:
 CTRL-b: Page up 
@@ -128,3 +134,8 @@ m<char>: mark the cursor location as mark <char> (numbers work too)
 `<char>: go to mark
 '<char>: go to marked line (utilize it with other operators such as 'd')
 :marks: see marks 
+
+Windows:
+:[num] split: split window; new window is [num] lines
+CTRL-W + j/k: switch to other window
+(Note: You can yank and put from one window to another)
