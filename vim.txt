@@ -1,20 +1,34 @@
 Quick notes:
 This program is very important for becoming a true super user.
 Set bash to vi mode: set -o vi
-see: vimtutor and :help user-manual
+see: vimtutor , :help user-manual , :help <subject>
 
 Basics:
 hjklm: movement
 e: move to the end of the word
 w: move to the start of the next word
 b: move to the start of the previous word 
+u: undo last command
+CTRL-r: redo undone
+U: undo whole line
+ZZ: write buffer and quit
 Command Syntax: [Count]<Operator><Motion>
+
+Command Mode:
+w - write
+r - read
+e - edit
+! - override
+ESC - abort command/operation
 
 Operators:
 x: delete
-u: undo last command
 r<char>: replace 
 c<motion>: change (delete and enter insert mode; 'ce' is useful)
+f<char>: search rightwards for <char> in line 
+F<char>: search leftwards for <char> in line 
+t<char>: search rightwards till <char> is met in line 
+T<char>: search leftwards till <char> is met in line 
 
 Motions:
 w: to start of next word
@@ -40,9 +54,10 @@ G: to the end of the file
 <Line Number>G: move to line number
 
 Searching:
-/<search word>: search forwards
+/<search word>: search forwards 
+('?' to start searching the other direction. Must escape special characters: .*[]()...)
 ?<search word>: search backwards
-(press enter; n: show next, N: show previous)
+(press enter; n: show next, N: show previous; precede n/N with a count if neccessary)
 %: find matching parenthesis, bracket, etc. 
 (cursor must be on one of those) 
 
@@ -74,12 +89,14 @@ typed character deletes an existing character)
 Copy and Paste:
 y: yank (use Visual Mode to utilize yanking)
 p: paste
+(Note: Vim registers are able to hold upto 26 clipboards.)
 
 Set commands:
 :set ic: set ignore case for search 
 :set hls: set highlight search
-:set is: set partial-matching search
+:set is: set partial-matching / incremental search
 :set no<CMD>: disable previously set command
+:set number: show line numbers
 
 Command Completion:
 :<CMD> CTRL-D: show completion menu (ESC to cancel)
@@ -97,3 +114,11 @@ CTRL-b: Page up
 CTRL-f: Page down 
 CTRL-u: Page up 1/2 screen
 CTRL-d: Page down 1/2 screen
+
+Intermediate Commands:
+execute last change command: .
+Toggle case: ~
+q: record keystrokes / stop recording
+@<char>: execute macro
+See digraphs: :digraphs
+Print digraph: CTRL-K<2 digraph characters>
