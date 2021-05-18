@@ -77,10 +77,11 @@ External Command Execution and File Manipulation:
 :r <File>: insert contents of a file.
 :r !<CMD>: insert output of an external command. 
 
-Visual Mode:
+Visual & Block Mode:
 v: enter visual mode, select lines of text via operators (hjkl, w, b, etc.)
 v + d: delete selected lines
 v + :w <File>: write the selected portion of the file as <File>
+v + CTRL-v: enter block mode
 
 Replace Mode:
 R: enter replace mode (which is like insert mode, but every 
@@ -103,10 +104,10 @@ Set commands:
 Command Completion:
 :<CMD> CTRL-D: show completion menu (ESC to cancel)
 
-Editing multiple files:
+Buffers & Editing multiple files:
 vim file1 file2 file3: open up 3 files for editing
-:bn: buffer next (edit next file)
-:bp: buffer previous (edit previous file)
+:[num] bn: buffer next (edit next file) num times
+:[num] bp: buffer previous (edit previous file) num times 
 :buffers: view list of files
 :buffer N: switch to buffer #N
 :e <File>: open <file> for editing 
@@ -116,6 +117,9 @@ vim file1 file2 file3: open up 3 files for editing
 :first, :last, :next, :previous: self-explanatory (use when: vim file1 file2 file3)
 (short for :writenext -> :wn)
 CTRL-^: switch to editing alternate file
+:hide: hide current buffer
+(A buffer is a copy of the file you edit.
+-: inactive, h: hidden, %: current, #: alternate, +: modified)
 
 Page up and down:
 CTRL-b: Page up 
@@ -134,8 +138,17 @@ m<char>: mark the cursor location as mark <char> (numbers work too)
 `<char>: go to mark
 '<char>: go to marked line (utilize it with other operators such as 'd')
 :marks: see marks 
+>: indent by 1 shiftwidth (See: shiftwidth)
+<: unindent by 1 shiftwidth
 
 Windows:
 :[num] split: split window; new window is [num] lines
+:[num] vsplit: split window vertically; new window is [num] lines
 CTRL-W + j/k: switch to other window
 (Note: You can yank and put from one window to another)
+:new: split window; new window is empty
+(Use 'sview' to view a file in new window)
+CTRL-W + '+': increase window size
+CTRL-W + '-': decrease window size
+CTRL-W + '=': make all window sizes equal
+[num]CTRL-W_: resize window to [num] lines
