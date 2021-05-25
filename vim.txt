@@ -27,8 +27,8 @@ r<char>: replace
 c<motion>: change (delete and enter insert mode; 'ce' is useful)
 f<char>: search rightwards for <char> in line 
 F<char>: search leftwards for <char> in line 
-t<char>: search rightwards till <char> is met in line 
-T<char>: search leftwards till <char> is met in line 
+t<char>: search rightwards till <char> is met in line (equivilant to 'f' but places cursor 1 character ahead)
+T<char>: search leftwards till <char> is met in line (equivilant to 'F' but places cursor 1 character behind)
 
 Motions:
 w: to start of next word
@@ -43,6 +43,7 @@ o: open a line below the cursor and enter insert mode
 O: open a line above the cursor and enter insert mode
 a: append (where the cursor is)
 A: move cursor to the end of line and append
+I: move cursor to the beginning of line and append
 J: join lines
 Ctrl-U (in insert mode): kill line up to cursor
 (equivilant to d0)
@@ -140,10 +141,13 @@ m<char>: mark the cursor location as mark <char> (numbers work too)
 :marks: see marks 
 >: indent by 1 shiftwidth (See: shiftwidth)
 <: unindent by 1 shiftwidth
+=: indent text 
+CTRL-J: jump to defenition of a program
 
 Windows:
 :[num] split: split window; new window is [num] lines
 :[num] vsplit: split window vertically; new window is [num] lines
+:exit: exit window
 CTRL-W + j/k: switch to other window
 (Note: You can yank and put from one window to another)
 :new: split window; new window is empty
