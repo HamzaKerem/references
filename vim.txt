@@ -43,7 +43,8 @@ o: open a line below the cursor and enter insert mode
 O: open a line above the cursor and enter insert mode
 a: append (where the cursor is)
 A: move cursor to the end of line and append
-I: move cursor to the beginning of line and append
+I: move cursor to the beginning of line and append 
+('A' and 'I' work well with Visual Block mode)
 J: join lines
 Ctrl-U (in insert mode): kill line up to cursor
 (equivilant to d0)
@@ -59,8 +60,6 @@ Searching:
 ('?' to start searching the other direction. Must escape special characters: .*[]()...)
 ?<search word>: search backwards
 (press enter; n: show next, N: show previous; precede n/N with a count if neccessary)
-%: find matching parenthesis, bracket, etc. 
-(cursor must be on one of those) 
 
 Subsitituion:
 s/<search>/<replace>: search and replace first instance on the
@@ -82,7 +81,7 @@ Visual & Block Mode:
 v: enter visual mode, select lines of text via operators (hjkl, w, b, etc.)
 v + d: delete selected lines
 v + :w <File>: write the selected portion of the file as <File>
-v + CTRL-v: enter block mode
+CTRL-v: enter block mode
 
 Replace Mode:
 R: enter replace mode (which is like insert mode, but every 
@@ -139,9 +138,6 @@ m<char>: mark the cursor location as mark <char> (numbers work too)
 `<char>: go to mark
 '<char>: go to marked line (utilize it with other operators such as 'd')
 :marks: see marks 
->: indent by 1 shiftwidth (See: shiftwidth)
-<: unindent by 1 shiftwidth
-=: indent text 
 CTRL-J: jump to defenition of a program
 
 Windows:
@@ -156,3 +152,21 @@ CTRL-W + '+': increase window size
 CTRL-W + '-': decrease window size
 CTRL-W + '=': make all window sizes equal
 [num]CTRL-W_: resize window to [num] lines
+
+Programming Related:
+:syntax on: turn on syntax highlighting
+:set background?: show background value ('bg' is the short option for background)
+:set background=light/dark: set background value
+:set filetype=c: set filetype for current file
+:set shiftwidth=4: set shiftwidth 
+:set cindent: set C style indentation
+:set smartindent: set indentation to be same as the preceding line 
+:set autoindent: set indentation to be same as the preceding line 
+Insert Mode + CTRL-d: reverse indent
+>: indent by 1 shiftwidth (See: shiftwidth)
+<: unindent by 1 shiftwidth
+('[num]>>' to indent num lines. Utilize '>' with Visual Block mode or '%') 
+=: indent text (position cursor on first '{', then execute '=%')
+%: find matching parenthesis, bracket, comments, preprocessor directives, etc. 
+(cursor must be on one of those) 
+[num]K: open up man page of the selected word sectioned under section num (cursor must be under the selected word)
