@@ -75,12 +75,13 @@ set status: set -g status-right/left "P: #P W:#I"
 ('#P' is pane index, '#I' is window index)
 
 Scripting:
-new session, name window, start in the background: tmux new-session -s "$sesh" -n editor -d
+new session, name window, start in the background: tmux new-session -s "$sesh" -n my_editor_window -d
 new window: tmux new-window -t "$sesh" -n music 
 split window of window 0, pane 0 horizontally; new pane is 10% of the window:
 tmux split-window -v -p 10 -t "$sesh":0.0
 send commands to window 0, pane 0; finish with a carriage return:
-tmux send-keys -t "$sesh":0.0 "cd $dir; clear;" C-m
+tmux send-keys -t "$sesh":0.0 "cd $dir; clear" C-m
+(Note: Last command, i.e. 'clear', should not have a proceeding ';'! Otherwise 'C-m unknown command' error will occur.)
 select a window:tmux select-window -t "$sesh":0
 attach session:tmux attach -t "$sesh"
 Select a configuration file to load: tmux -f myconf.conf attach
