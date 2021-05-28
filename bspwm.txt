@@ -1,0 +1,15 @@
+Quick notes:
+bspwm is a tiling window manager which is configured through bspc.
+It is commonly used with sxhkd.
+
+Config files:
+~/.config/bspwm/bspwmrc: location of bspwm's config file
+~/.config/sxhkd/sxhkdrc: location of sxhkd's config file; bspwm hotkeys are configured here
+/usr/share/bspwm/examples/bspwmrc: example bspwmrc file
+/usr/share/bspwm/examples/sxhkdrc: example sxhkdrc file
+
+Configuration:
+bspc query -M names: get monitor names
+bspc monitor -d I II III IV V: configure 5 desktopenvironments for a single monitor 
+bspc monitor <monitor_name> I II III: configure 3 desktopenvironments for the given monitor 
+super + {1,2,3,4,5...}: select desktop environment
