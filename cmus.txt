@@ -1,9 +1,6 @@
 Misc. Notes:
 Uses a lot of vim bindings: hjkl, /, ?, ..., G, g
 man cmus, man cmus-tutorial
-Remember to :save
-:add when in view 1.
-:clear to clear songs
 
 Navigation:
 Navigate through views: 1-7 keys
@@ -23,6 +20,7 @@ play next: b
 play previous z
 
 Que manipulation:
+Set repeat: Ctrl-r
 Cycle through different options for que: m 
 (Setting appears on the left of '|' on the bottom right)
 Toggles (right of '|'): [C]ontinue, [r]epeat, [s]huffle, 
@@ -44,3 +42,16 @@ change default (*) playlist: select playlist + space
 Command Line:
 Add songs: :add ~/Music
 Remove songs: :clear
+save: :save
+source file: :source <config_file>
+
+Configuration:
+(In view 7 select a command to see how to bind it to a key)
+~/.config/cmus/rc: cmus config file (place the following commands here)
+bind -f common <key> <cmd>: bind given key to command
+bind -f common [ player-next: replace 'b' with '['  
+bind -f common ] player-prev: replace 'z' with ']'  
+unbind -f common <key>: unbind key 
+unbind -f common z: unbind previously set player-prev key
+colorscheme <colorscheme>: set colorscheme
+(Remember to source config file when done; use '#' as comments to organize sections in the config file.)
