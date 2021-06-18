@@ -1,4 +1,4 @@
-Quick notes:
+Quick notes:                 
 This program is very important for becoming a true super user.
 Set bash to vi mode: set -o vi
 see: vimtutor , :help user-manual , :help <subject>
@@ -22,9 +22,11 @@ e - edit
 ESC - abort command/operation
 
 Operators:
-x: delete
+d: delete line
+x: delete character
 r<char>: replace 
 c<motion>: change (delete and enter insert mode; 'ce' is useful)
+C: delete line and enter insert mode
 f<char>: search rightwards for <char> in line 
 F<char>: search leftwards for <char> in line 
 t<char>: search rightwards till <char> is met in line (equivilant to 'f' but places cursor 1 character ahead)
@@ -82,6 +84,7 @@ v: enter visual mode, select lines of text via operators (hjkl, w, b, etc.)
 v + d: delete selected lines
 v + :w <File>: write the selected portion of the file as <File>
 CTRL-v: enter block mode
+:help v_b_<command>: get help on a specific Visual Block command (i.e. v_b_c)
 
 Replace Mode:
 R: enter replace mode (which is like insert mode, but every 
@@ -132,6 +135,7 @@ Intermediate Commands:
 ~: Toggle case
 q: record keystrokes / stop recording
 @<char>: execute macro
+z: center current line to be in the middle of the screen
 :digraphs: See digraphs
 CTRL-K<2 digraph characters>: Print digraph
 m<char>: mark the cursor location as mark <char> (numbers work too)
@@ -169,4 +173,20 @@ Insert Mode + CTRL-d: reverse indent
 =: indent text (position cursor on first '{', then execute '=%')
 %: find matching parenthesis, bracket, comments, preprocessor directives, etc. 
 (cursor must be on one of those) 
-[num]K: open up man page of the selected word sectioned under section num (cursor must be under the selected word)
+[num]K: open up man page of the selected word sectioned under section 'num' (cursor must be under the selected word)
+
+Abbreviation:
+:abbreviate ad advertisement: abbreviate 'advertisement' as 'ad'.
+<insert abbreviation> + space: type out whole string
+(Note: '<space>' tells vim to use the space character. i.e. :abbreviate space <space>)
+:abbreviate: list all abbreviations
+
+Mapping:
+:map <key> <commands>: map <commands> to <key> (i.e. :map <F5> i{<ESC>ea}<ESC>)
+(Note: <key> can be multiple keys or any string. A mapping will supersede a default vim command.)
+:map: list all mappings
+
+Notes:            
+Look into Visual block + c & Visual block + A. Supposed to edit multiple lines but doesn't work.
+Left off in chapter 7 under section "Location Items in a Program"
+Left off section "Fixing the Way Delete Works"
