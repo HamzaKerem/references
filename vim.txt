@@ -48,8 +48,7 @@ A: move cursor to the end of line and append
 I: move cursor to the beginning of line and append 
 ('A' and 'I' work well with Visual Block mode)
 J: join lines
-Ctrl-U (in insert mode): kill line up to cursor
-(equivilant to d0)
+Ctrl-U (in insert mode): kill line up to cursor (equivilant to d0)
 
 File Status:
 Ctrl+G: show location
@@ -186,7 +185,26 @@ Mapping:
 (Note: <key> can be multiple keys or any string. A mapping will supersede a default vim command.)
 :map: list all mappings
 
+Controlling what backspace does:
+:set backspace=indent/eol/start: select a single backspace value or combine them all instead by using commas inbetween values
+
+Saving settings:
+:mkvimrc <file>: writes all settings of the current session to <file>
+:source <file>: read and set settings of the current session from <file>
+(Note: the following initialization files are searched for when vim is launched, once the first one is found, settings
+are loaded and none of the rest are read: ~/.vimrc, ~/_vimrc, ~/.exrc ~/_exrc. In fact, ~/.exrc was used by Vi.) 
+:version: shows version and initialization file information
+
+Commands to utilize more:
+C: delete line and enter insert mode
+I: move cursor to the beginning of line and append 
+J: join lines
+Ctrl-U (in insert mode): kill line up to cursor (equivilant to d0)
+P: put / paste before cursor
+:autowrite: auto-write before editing next or previous buffer
+z: center current line to be in the middle of the screen
+
 Notes:            
 Look into Visual block + c & Visual block + A. Supposed to edit multiple lines but doesn't work.
 Left off in chapter 7 under section "Location Items in a Program"
-Left off section "Fixing the Way Delete Works"
+Left off section "Basic Command-Mode Commands", CH 9.
