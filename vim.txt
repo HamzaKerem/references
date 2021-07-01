@@ -97,6 +97,7 @@ xp: character twiddling / swapping
 (Note: Vim registers are able to hold upto 26 clipboards.)
 
 Set commands:
+:set <option>?: display the value of <option>
 :set ic: set ignore case for search 
 :set hls: set highlight search
 :set is: set partial-matching / incremental search
@@ -195,6 +196,29 @@ Saving settings:
 are loaded and none of the rest are read: ~/.vimrc, ~/_vimrc, ~/.exrc ~/_exrc. In fact, ~/.exrc was used by Vi.) 
 :version: shows version and initialization file information
 
+Command-Mode:
+(Note: vi is based off another text editor called "ex")
+Q: enter command-line mode
+:visual: command-line mode
+:n1,n2 print: print the lines between n1 and n2
+:% print: print the entire file 
+:shell: enter shell ('exit' to go back to vim)
+
+Dealing with text files:
+:set textwidth=30: line breaks are automatically inserted after 30 characters
+:set wrapmargin=10: line breaks are automatically inserted 10 characters before the maximum screen width is reached 
+Visual Mode + gq: format the selected paragraph to be `textwidth` characters each line 
+gq4j: format the following 5 lines to be `textwidth` characters each line 
+gqgq: format current line
+gqip: format the current paragraph
+:1,5 left/center/right <width>: center a range of lines 
+:left/center/right: align the current line according to textwidth
+:set formatoptions=<characters>: control how Vim performs automatic wrapping (characters 'cq' is good for programming)
+:set formatprg=fmt: set the formating program to be UNIX fmt instead of Vim's internal module
+:!}fmt: filter the paragraph and use fmt for formatting
+:set fileformats=unix,dos: tells Vim to first check if the file is in Unix format, then in the MS-DOS format
+
+
 Commands to utilize more:
 C: delete line and enter insert mode
 I: move cursor to the beginning of line and append 
@@ -203,8 +227,9 @@ Ctrl-U (in insert mode): kill line up to cursor (equivilant to d0)
 P: put / paste before cursor
 :autowrite: auto-write before editing next or previous buffer
 z: center current line to be in the middle of the screen
+:set <option>?: display the value of <option>
 
 Notes:            
 Look into Visual block + c & Visual block + A. Supposed to edit multiple lines but doesn't work.
 Left off in chapter 7 under section "Location Items in a Program"
-Left off section "Basic Command-Mode Commands", CH 9.
+Left off section CH11.
