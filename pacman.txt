@@ -1,0 +1,13 @@
+Install a package: pacman -S PACKAGE
+Remove a package and its dependencies: pacman -Rs PACKAGE_REGEX
+Search for package: pacman -Ss PACKAGE_REGEX
+Upgrade package: pacman -Syu PACKAGE
+Display local package information: pacman -Qi PACKAGE
+Display remote package information: pacman -Si PACKAGE
+Refresh database: pacman -Sy
+
+Options:
+-S, --sync: synchronize packages
+-R, --remove: remove packages
+-y, --refresh: download package database
+-s, --search: search for given regex
