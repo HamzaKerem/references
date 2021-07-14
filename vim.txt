@@ -217,7 +217,17 @@ gqip: format the current paragraph
 :set formatprg=fmt: set the formating program to be UNIX fmt instead of Vim's internal module
 :!}fmt: filter the paragraph and use fmt for formatting
 :set fileformats=unix,dos: tells Vim to first check if the file is in Unix format, then in the MS-DOS format
+(: move back one sentence
+): move forward one sentence 
+{: move back one paragraph 
+}: move forward one paragraph 
+g?<motion>: encrypt a block of text with the rot13 algorithm
 
+Automatic Completion:
+CTRL-p (in Insert Mode): implement completion suggestions after searching for previous matches (Note: repeating CTRL-p will undo 
+implementation)
+CTRL-n (in Insert Mode): implement completion suggestions after searching for upcoming matches
+:set ignorecase: tells Vim to ignore case for completion suggestions
 
 Commands to utilize more:
 C: delete line and enter insert mode
