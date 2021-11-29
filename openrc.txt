@@ -1,0 +1,11 @@
+Quick Notes:
+OpenRc is a dependency based init system written by Gentoo developers.
+
+Services:
+services are named: <package_name>-openrc
+services can be found in: /etc/init.d/
+list services: rc-service -l
+start/stop/restart services: rc-service <service> start/stop/restart 
+Configuration:
+/etc/rc.conf: openrc config file
+

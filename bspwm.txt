@@ -3,10 +3,10 @@ bspwm is a tiling window manager which is configured and controlled through bspc
 It is commonly used with sxhkd.
 
 X Server Configuration:
+startx: enters the graphical environment by calling xinit
 ~/.xinitrc: config file of xinit; add the following lines:
 xrdb .Xresources # reads Xresources
 exec bspwm # execute bspwm
-startx: enters the graphical environment by calling xinit
 
 Config files:
 ~/.config/bspwm/bspwmrc: location of bspwm's config file
@@ -14,8 +14,20 @@ Config files:
 /usr/share/bspwm/examples/bspwmrc: example bspwmrc file
 /usr/share/bspwm/examples/sxhkdrc: example sxhkdrc file
 
-bspwm Configuration:
+bspwmrc Configuration:
+sxhkdrc syntax:
+<key> + <key>....
+	<command>
+<key> + {<keyA>,<keyB>}
+	<command> {<argA>,<argB>}
+
+General bspc commands:
+bspc quit: quit bspwm
+bspc wm -r: restart bspwm
+
+bspc monitor commands:
 bspc query -M names: get monitor names
-bspc monitor -d I II III IV V: configure 5 desktopenvironments for a single monitor 
+bspc monitor -d I II III IV V: configure 5 desktop environments for a single monitor 
 bspc monitor <monitor_name> I II III: configure 3 desktopenvironments for the given monitor 
-super + {1,2,3,4,5...}: select desktop environment
+
+bspc desktop -l next:  

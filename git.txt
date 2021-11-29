@@ -55,6 +55,7 @@ Get the most recent commits from a remote repo: git pull
 Configuration:
 See configurations: git config --list
 Save credentials: git config --global credential.helper store 
+Save credentials cache: git config --global credential.helper cache 
 Edit ~/.gitconfig: git config --global --edit
 
 Workflow Example:
