@@ -1,7 +1,7 @@
 Installation & Setup:
 Install transmission-cli and transmission-openrc (if using openrc)
 Start transmission service: sudo rc-service transmission start
-lect directory for the daemon to watch for torrent files: transmission-daemon -c DIR
+Select directory for the daemon to watch for torrent files: transmission-daemon -c DIR
 Run the daemon: transmission-daemon
 
 Torrents:
@@ -11,4 +11,6 @@ Remove torrent: transmission-remote -t ID --remove
 stop torrent: transmission-remote -t ID --stop
 start torrent: transmission-remote -t ID --start
 Purge torrent: transmission-remote -t ID --remove-and-delete 
-Note: Torrents are stored in /var/lib/transmission/downloads/
+
+Storage:
+Torrents are stored in /var/lib/transmission/downloads/
