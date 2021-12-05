@@ -1,0 +1,13 @@
+The Arch User Repository (AUR) is a community-driven repository for Arch 
+users. It contains package descriptions (PKGBUILDs) that allow you to 
+compile a package from source with makepkg and then install it via pacman.
+
+Installing packages from AUR using `makepkg`:
+0. Find the Git Clone URL of the package using https://aur.archlinux.org/packages
+1. git clone https://aur.archlinux.org/PACKAGE.git 
+2. cd PACKAGE
+3. makepkg -si
+
+Options:
+-s, --syncdeps: install missing dependencies
+-i, --install: install package

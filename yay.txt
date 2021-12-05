@@ -1,0 +1,7 @@
+yay is an AUR helper written in go. It is a Pacman wrapper with AUR support.
+
+Instead of having to manually install packages using `git` and `makepkg`, 
+it allows users to easily install packages from the CLI as any package manager would.
+yay accepts available pacman options but also has some unique ones. 
+
+In Artix Linux, `pacman -Ss octopi` returns nothing, yet `yay -Ss octopi` does return something.
