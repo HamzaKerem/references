@@ -14,7 +14,7 @@ Display local packages: pacman -Q
 Display local packages explicitly installed by the user: pacman -Qe # Use -Qeq option to remove version name
 Display local packages that match regex: pacman -Qs PACKAGE_REGEX
 Display local package information: pacman -Qi PACKAGE
-Display remote package information: pacman -Si PACKAGE
+Display remote package information: pacman -Si PACKAGE # Very useful for learning dependencies
 Display unneeded/orphan dependencies: pacman -Qdt
 
 # Refresh database and Upgrade Packages
