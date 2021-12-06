@@ -30,3 +30,6 @@ Options:
 
 Installed Packages Cache:
 `/var/cache/pacman/pkg/` contains cache data of installed packages.
+
+About Repositories:
+`base` is the default package group. On the other hand, `core`, `extra` and `community` are repositories.

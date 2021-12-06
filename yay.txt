@@ -5,3 +5,12 @@ it allows users to easily install packages from the CLI as any package manager w
 yay accepts available pacman options but also has some unique ones. 
 
 In Artix Linux, `pacman -Ss octopi` returns nothing, yet `yay -Ss octopi` does return something.
+
+Options:
+-Y, --yay: yay specific operation
+-a, --aur: target AUR
+-G, --getpkgbuild: download PKGBUILD
+-c, --clean: Remove uneeded dependencies
+
+Upgrade all AUR packages:
+yay -Sua

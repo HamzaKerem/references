@@ -39,3 +39,7 @@ bspc node {west,south,north,east}: Focus on selected window
 bspc node -f {west,south,north,east}: Replace current window with the selected one
 bspc node -f {next,prev}.local.!hidden.window: Focus on next/previous window
 bspc desktop -f {prev,next}.local: Focus on next/previous desktop
+
+bspc node --close: close selected window
+bspc node --kill: kill all instances of the selected program
+bspc node --flag hidden=on|off: Hide/unhide selected window 
