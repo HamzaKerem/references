@@ -21,6 +21,10 @@ sxhkdrc syntax:
 <key> + {<keyA>,<keyB>}
 	<command> {<argA>,<argB>}
 
+Note: Some special keys have special names (i.e. alt, super, shift, etc.).
+The rest can be referenced by the "keycode" field outputted by `xev`.
+For instance, escape is 133.
+
 General bspc commands:
 bspc quit: quit bspwm
 bspc wm -r: restart bspwm
