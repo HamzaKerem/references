@@ -13,9 +13,9 @@ find track: /<track> (press enter and 'n' to view next match:
 ?: backwards search)
 
 Basic Song manipulation:
-Volume up / down: = / - (no Ctrl)
+Volume up / down: = / - (no shift)
 Seek a min ahead or back: < / >	
-and skip forward or back: hl
+and skip forward or back: h / l
 play next: b
 play previous z
 
@@ -54,4 +54,7 @@ bind -f common ] player-prev: replace 'z' with ']'
 unbind -f common <key>: unbind key 
 unbind -f common z: unbind previously set player-prev key
 colorscheme <colorscheme>: set colorscheme
-(Remember to source config file when done; use '#' as comments to organize sections in the config file.)
+
+Notes:  
+Source config in cmus with :source <path-to-config> to implement changes.
+Create comments with '#'.
