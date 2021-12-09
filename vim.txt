@@ -25,12 +25,12 @@ Operators:
 d: delete line
 x: delete character
 r<char>: replace 
-c<motion>: change (delete and enter insert mode; 'ce' is useful)
+c<motion>: change (delete and enter insert mode; 'ce', 'cb' and 'cc' are useful)
 C: delete line and enter insert mode
 f<char>: search rightwards for <char> in line 
 F<char>: search leftwards for <char> in line 
-t<char>: search rightwards till <char> is met in line (equivilant to 'f' but places cursor 1 character ahead)
-T<char>: search leftwards till <char> is met in line (equivilant to 'F' but places cursor 1 character behind)
+t<char>: search rightwards till <char> is met in line (equivilant to 'f' but places cursor 1 character behind)
+T<char>: search leftwards till <char> is met in line (equivilant to 'F' but places cursor 1 character ahead)
 
 Motions:
 w: to start of next word
@@ -69,7 +69,7 @@ s/<search>/<replace>/g: search and replace all instance on the
 current line; 'g' stands for global.
 <line number>,<line number>s/<s>/<r>/g: search within given line numbers
 %s/<search>/<replace>/g: search and replace all instance in the file 
-%s/<search>/<replace>/g: search and replace all instance in the file and 
+%s/<search>/<replace>/gc: search and replace all instance in the file and 
 prompt user for confirmation 
 
 External Command Execution and File Manipulation:
@@ -105,7 +105,7 @@ Set commands:
 :set number: show line numbers
 
 Command Completion:
-:<CMD> CTRL-D: show completion menu (ESC to cancel)
+:<CMD> Ctrl-D: show completion menu (ESC to cancel)
 
 Buffers & Editing multiple files:
 vim file1 file2 file3: open up 3 files for editing
@@ -125,8 +125,8 @@ CTRL-^: switch to editing alternate file
 -: inactive, h: hidden, %: current, #: alternate, +: modified)
 
 Page up and down:
-CTRL-b: Page up 
-CTRL-f: Page down 
+CTRL-b: Page up (backwards)
+CTRL-f: Page down (forwards)
 CTRL-u: Page up 1/2 screen
 CTRL-d: Page down 1/2 screen
 
@@ -140,7 +140,7 @@ z: center current line to be in the middle of the screen
 CTRL-K<2 digraph characters>: Print digraph
 m<char>: mark the cursor location as mark <char> (numbers work too)
 `<char>: go to mark
-'<char>: go to marked line (utilize it with other operators such as 'd')
+'<char>: go to marked line (utilize it with visual mode and other operators such as 'd')
 :marks: see marks 
 CTRL-J: jump to defenition of a program
 
