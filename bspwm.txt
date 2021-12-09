@@ -23,7 +23,7 @@ sxhkdrc syntax:
 
 Note: Some special keys have special names (i.e. alt, super, shift, etc.).
 The rest can be referenced by the "keycode" field outputted by `xev`.
-For instance, escape is 133.
+For instance, escape is 9.
 
 General bspc commands:
 bspc quit: quit bspwm
