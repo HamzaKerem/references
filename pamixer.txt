@@ -1,0 +1,15 @@
+pamixer is the Pulseaudio CLI mixer and it controls the volume levels of the Pulseaudio sinks.
+
+Get/Set volume:
+pamixer --get-volume # returns current vol. level
+pamixer --set-volume VOL # sets volume to VOL
+
+Mute:
+pamixer --toggle-mute # toggles mute
+
+Increase/Decrease volume:
+pamixer --increase/decrease PERCENTAGE # increase/decrease vol. by PERCENTAGE percent
+
+Allow boost:
+pamixer --allow-boost --increase 10 # allow the volume levels to rise above 100, then increase
+volume by 10 percent
