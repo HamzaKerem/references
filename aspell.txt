@@ -1,0 +1,12 @@
+aspell is an independent spell checker. Add language dictonaries for your desired language.
+
+aspell -c FILE # spell check FILE
+aspell pipe # run interactively
+aspell list # spell check input from stdin, see: 'cat FILE | aspell list | sort | uniq'
+
+Options:
+--lang DICTIONARY_LANGUAGE # spell check in given language
+--ignore=INTEGER # ignore checking words with INTEGER letters
+--mode=MODE # spell check with MODE mode, where MODE is none, url, email, html, tex or nroff.
+OR -e for email, -H for Html/Sgml, -t for  Tex  or -n for Nroff
+--dont-backup, -x # don't create .bak file
