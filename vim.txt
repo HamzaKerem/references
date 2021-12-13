@@ -207,6 +207,8 @@ Q: enter command-line mode
 Dealing with text files:
 :set textwidth=30: line breaks are automatically inserted after 30 characters
 :set wrapmargin=10: line breaks are automatically inserted 10 characters before the maximum screen width is reached 
+gk: move up one formatted or unformatted line
+gj: move down one formatted or unformatted line
 Visual Mode + gq: format the selected paragraph to be `textwidth` characters each line 
 gq4j: format the following 5 lines to be `textwidth` characters each line 
 gqgq: format current line
