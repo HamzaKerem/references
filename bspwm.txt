@@ -2,29 +2,13 @@ Quick notes:
 bspwm is a tiling window manager which is configured and controlled through bspc.
 It is commonly used with sxhkd.
 
-X Server Configuration:
-startx: enters the graphical environment by calling xinit
-~/.xinitrc: config file of xinit; add the following lines:
-xrdb .Xresources # reads Xresources
-exec bspwm # execute bspwm
-
 Config files:
 ~/.config/bspwm/bspwmrc: location of bspwm's config file
-~/.config/sxhkd/sxhkdrc: location of sxhkd's config file; bspwm hotkeys are configured here
 /usr/share/bspwm/examples/bspwmrc: example bspwmrc file
-/usr/share/bspwm/examples/sxhkdrc: example sxhkdrc file
-
-bspwmrc Configuration:
-sxhkdrc syntax:
-<key> + <key>....
-	<command>
-<key> + {<keyA>,<keyB>}
-	<command> {<argA>,<argB>}
 
 General bspc commands:
 bspc quit: quit bspwm
 bspc wm -r: restart bspwm
-pkill -USR1 -x sxhkd: reload sxhkdrc
 
 bspc monitor commands:
 bspc query -M names: get monitor names
