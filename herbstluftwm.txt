@@ -1,0 +1,32 @@
+Herbstluftwm is a window manager that's controlled by the client program, herbstclient.
+
+Config file:
+~/.config/herbstluftwm/autostart # Make sure it's executable
+
+General sytax:
+# Note: 'hc' is aliased to herbstclient
+herbstclient keybind "$KEY1"-"$KEY2"-"$KEY3" COMMAND
+# Special names: Super, Return, Shift, Alt, Ctrl
+# use '-' or '+' as a seperator
+
+###### GENERAL STUFF ###### 
+# Quit/Reload WM
+Quit: hc quit 
+Reload: hc reload 
+
+# Unbind keys
+Unbind given key: hc keyunbind KEY
+Unbind all keys: hc keyunbind --all
+
+# Spawn executables
+Spawn program: hc spawn PROGRAM ARGS
+
+# Window
+Close window: hc close 
+
+# Focus/Shift window
+focus left/right/down/up: hc focus left/right/down/up # Selects window
+shift left/right/down/up: hc shift left/right/down/up # Replaces 
+##########################
+###### APPEARENCE STUFF #########
+
