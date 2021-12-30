@@ -16,6 +16,7 @@ Display local packages that match regex: pacman -Qs PACKAGE_REGEX
 Display local package information: pacman -Qi PACKAGE
 Display remote package information: pacman -Si PACKAGE # Very useful for learning dependencies
 Display unneeded/orphan dependencies: pacman -Qdt
+Display which file is owned by what package: pacman -Qo /usr/bin/FILE
 
 # Refresh database and Upgrade Packages
 Refresh database: pacman -Sy
