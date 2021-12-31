@@ -5,23 +5,36 @@ Config file:
 Or change the config/autostart file:
 exec herbstluftwm -c/--autostart PATH
 
+Key types:
+Modifiers are Super, Alt, Shift, Ctrl, Return, etc.
+Symbols are a, s, d, t, y, 3, bracketleft, grave, etc.
+Keybindings can only be consisting of Mod + Sym, Mod + Mod + Sym,
+and not Mod + Sym + Sym
+
 Key names:
 Key names can be found in `/usr/include/X11/keysymdef.h`
 For instance, in herbstluftwm XK_F1 is referenced just as F1,
 XK_bracketright is as bracketright (aka ']').
 Also visible (XF86AudioMute) in this case, when using `xev`:
 `state 0x0, keycode 121 (keysym 0x1008ff12, XF86AudioMute), same_screen YES,`
-# Special names: Super, Return, Shift, Alt, Ctrl
 
 General sytax:
 # Note: 'hc' is aliased to herbstclient
-herbstclient keybind "$KEY1"-"$KEY2"-"$KEY3" COMMAND
+herbstclient keybind "$MOD1"-"$MOD2"-"$Sym" COMMAND
 # use '-' or '+' as a seperator
 
 ###### GENERAL STUFF ###### 
 # Quit/Reload WM
 Quit: hc quit 
 Reload: hc reload 
+
+# Layout
+print layout: hc layout
+save layout: my_layout="$(hc dump)"
+load layout: hc load "$my_layout"
+
+# Monitors
+list monitors: hc list_monitors
 
 # Unbind keys
 Unbind given key: hc keyunbind KEY
@@ -41,6 +54,7 @@ shift left/right/down/up: hc shift left/right/down/up # Replaces
 ####### FRAMES STUFF #######
 spawn frames: hc split horizontal/vertical FRACTION # Where frame fraction is for instace 0.5
 Resize frames: hc resize down/up/left/right +FRACTION # Where FRACTION is for example 0.05
+remove a frame: hc remove
 ##########################
 
 ####### MOUSE STUFF #######
@@ -48,10 +62,11 @@ Unbind mouse keys: hc mouseunbind --all
 Bind mouse to key: hc mousebind B1/B2/../B5 move/resize/zoom/call
 ##########################
 
-####### SCREEN MODES #######
-toggle fullscreen: hc fullscreen toggle
-toggle floating: hc floating toggle
-toggle pseudotile: hc pseudotile toggle
+####### LAYOUT STUFF #######
+toggle fullscreen: hc fullscreen MODE # Where mode in on/off/toggle
+toggle floating: hc floating MODE
+toggle pseudotile: hc pseudotile MODE
+cycle through windows: hc cycle 
 ##########################
 
 ###### WINDOW APPEARENCE STUFF #########
