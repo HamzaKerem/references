@@ -1,0 +1,18 @@
+groff is a document formatting system that's an implementation of `roff` along with many
+additions to it. groff also supports macro packages such as groff_ms, groff_me, 
+groff_man, etc. 
+
+groff_ms syntax:
+Title: .TL
+Author: .AU
+Authour Institute: .AI
+New Heading: .NH # Section Headings are automatically numbered. Creates section 1
+New Heading Subsection: .NH 2 # Creates subsection 1.1
+New Heading Subsection: .NH 2 # Creates subsection 1.2
+Bold string: .B "STRING" # Run the 'B' Macro on the argument STRING
+Italic string: .I "STRING" # Run the 'I' Macro on the argument STRING
+Bold & Italic string: .BI "STRING" # Run the 'B' and 'I' Macros on the argument STRING
+
+Compiling:
+groff -ms FILE -T TYPE # outputs to stdout by default
+groff -ms Research_Paper.ms -T pdf > RS.pdf
