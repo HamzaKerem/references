@@ -18,3 +18,21 @@ Bold & Italic string: .BI "STRING" # Run the 'B' and 'I' Macros on the argument 
 Compiling:
 groff -ms FILE -T TYPE # outputs to stdout by default
 groff -ms Research_Paper.ms -T pdf > RS.pdf
+
+Pre-processors:
+The pre-processors allow for a complete groff expirience.
+eqn allows for formating mathical equations.
+
+eqn syntax:
+.EQ # Start equation
+x = 5 + 3
+.EN # End equation
+x sup 2 # x to the power of 2
+x sup {2 - 2y} # x to the power of 2 - 2y
+x sub 2 # subscript 2
+phi = 1 over 2 # greek letter "phi" equals 1/2
+phi = {1 + 5} over 2 # over is applied to the argument given before it
+phi = {1 + sqrt 5} over 2 # sqrt is applied to "5"
+
+Compiling eqn:
+groff -e -ms file.ms -T TYPE # -e for preprocess with eqn
