@@ -74,4 +74,12 @@ set frame padding: hc set frame_padding 0
 set window gap: hc set window_gap 6
 ##########################
 
+###### TAG STUFF #######
+create new empty tag: hc add TAG
+focus on TAG: hc use TAG
+focus on TAG_INDEX: hc use TAG_INDEX # -n/+n works too
+focus on last switchted tag: hc use_previous
+rename TAG: hc rename OLDTAG NEWTAG
+##########################
+
 Look into: mouse stuff, window modes, resizing, monitors
