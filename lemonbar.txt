@@ -1,0 +1,15 @@
+lemonbar is lightweight status bar.
+Configuration is done through `screen-rc`-like format strings/commands.
+
+Configuration (in script my_script.sh):
+while true; do
+	sleep 1
+
+	echo "%{l} $(acpi)"
+	echo "%{c} $(date)"
+	echo "%{r} $(whoami)"
+done
+
+Apply configuration:
+./my_script.sh | lemonbar # Preferably placed in the last line of WM startup/config script
+

@@ -1,0 +1,16 @@
+mpc is a CLI client for mpd
+
+Basic Commands:
+mpc play [TRACK_NUM] # play track
+mpc pause # pause track
+mpc stop # stop playing
+mpc toggle # toggle between play/(pause|stop)
+mpc seek [+-]HH:MM:SS # Seek forwards or backwards
+
+Queue Commands:
+mpc ls # return playlists in the database
+
+Status Commands:
+mpc status '%songpos%' # return track position in playlist
+mpc status '%length%' # return pl. length
+mpc status '%state%' # return 'playing' or 'paused'
