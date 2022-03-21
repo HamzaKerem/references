@@ -13,3 +13,6 @@ done
 Apply configuration:
 ./my_script.sh | lemonbar # Preferably placed in the last line of WM startup/config script
 
+Fonts:
+#Install lemonbar-xft-git (replaces lemonbar-git)
+lemonbar -f FONT # See: https://www.nico.schottelius.org/docs/xorg-terminal-emulator-fonts/

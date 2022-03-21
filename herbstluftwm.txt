@@ -69,7 +69,7 @@ toggle pseudotile: hc pseudotile MODE
 cycle through windows: hc cycle 
 ##########################
 
-###### WINDOW APPEARENCE STUFF #########
+###### APPEARENCE STUFF #########
 set frame padding: hc set frame_padding 0
 set window gap: hc set window_gap 6
 ##########################
