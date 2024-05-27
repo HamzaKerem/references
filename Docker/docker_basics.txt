@@ -20,5 +20,11 @@ tools / runtimes. You can spin up multiple container based upon one image.
 Containers are running instances of images.
 
 Search on DockerHub for pre-existing containers.
-`docker run IMG`
+`docker run IMG` # run container from image
 `docker ps -a` show all containers (not just running)
+`docker run -it IMG` run container with an interactive terminal, not running on local machine
+`docker stop CONTAINER` stop container
+
+For all docker commands where an ID can be used, you don't always have to write
+out the full id. You can also just use the first (few) character(s) - just
+enough to have a unique identifier.

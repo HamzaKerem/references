@@ -1,0 +1,9 @@
+Images are layer based... and is read-only
+every instruction in the dockerfile represents a layer.
+
+When building an image, the changing layer and all layers after are processed..
+existing, unchanged, previous layers remain untouched.
+
+The container layer (containing the image layer) is r-w
+
+docker images # list images

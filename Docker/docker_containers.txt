@@ -1,0 +1,10 @@
+`docker run ...` creates a new container
+`docker start CNTR` start cntr (non-interactive, returns to terminal aka detached mode)
+`docker start -a CNTR` start cntr in attached mode (does not accept stdin)
+`docker start -ai CNTR` start cntr in attached and interactive mode
+`docker run -p LOCAL:EXPOSE -d IMG` run in detached mode (as opposed to default attached mode)
+`docker attach CNTR` attach stdin, stdout, stderr to cntr
+`docker logs CNTR` print logs of cntr
+`docker logs -f|--follow CNTR` follow logs of cntr
+`docker rm CNTR..` remove stopped cntr(s)
+`docker container prune` remove all stopped cntrs

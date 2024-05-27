@@ -1,0 +1,24 @@
+"Dockerfile" used to set up the img
+
+FROM baseImage # set the base image to use
+
+WORKDIR /app # set working dir where RUN cmds are to be executed
+
+COPY . . # First dot tells docker that all files in the dir and subdirs 
+# should be copied into img. Second dot is the path inside of the img where the files should
+# be stored.
+COPY . /app # All files in the dir and subdirs are copied into /app
+
+RUN npm install # run the cmd in the working dir
+
+EXPOSE 80 # expose specific port number for the local machine to interact with
+# (optional yet recommended)
+
+CMD ["node", "server.js"] # do not execute when img is created
+# execute when a container is started based on the img
+# If no CMD is specified, CMD of base img is executed
+# CMD is always last instruction
+
+.....
+`docker build .`
+`docker run -p LOCAL_PORT:EXPOSE_PORT IMG_ID` -p for publish
