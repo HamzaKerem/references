@@ -1,0 +1,24 @@
+Docker consists of multiple parts: docker daemon, cli frontend, and containers.
+
+Firstly, enable and start docker daemon. If you want to be able to run the
+docker CLI command as a non-root user, add your user to the docker user group,
+re-login, and restart docker.service. (Anyone added to the docker group is
+root equivalent because they can use the docker run --privileged command to
+start containers with root privileges.)
+
+`docker info`
+
+Note: turn off tailscale
+
+Download dockerfile, "Dockerfile", run `docker build .`
+`docker run -p PORT:PORT IMG_ID`
+`docker ps` 
+`docker stop CONTAINER_ID`
+
+Images are templates/blueprints for containers. Images contain code + required
+tools / runtimes. You can spin up multiple container based upon one image.
+Containers are running instances of images.
+
+Search on DockerHub for pre-existing containers.
+`docker run IMG`
+`docker ps -a` show all containers (not just running)
