@@ -7,3 +7,15 @@ existing, unchanged, previous layers remain untouched.
 The container layer (containing the image layer) is r-w
 
 docker images # list images
+docker rmi IMG_ID.. # remove img
+Container needs to be removed before removing img
+docker image prune # remove all unused imgs
+docker image inspect IMG_ID # inspect img
+docker image prune -a # remove all images including tagged imgs
+
+Sharing via DockerHub:
+docker push IMG
+docker pull IMG
+docker login|logout
+
+docker search IMG # search for IMG

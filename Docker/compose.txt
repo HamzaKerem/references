@@ -1,0 +1,58 @@
+Docker compose is a tool allowing for the creation and destruction of
+containers with just one command.. just specify a configuration file and set of
+orchestration commands. Note: docker compose is not suited for managing multiple cnts
+on different machines
+
+services aka cntrs are automatically removed when finished when using d-compose
+Use a '-' whenever you have a single value. use ':' for key-value pairs.
+All services are automatically added to the same network.
+
+In docker-compose.yaml:
+services:
+	mongodb:
+		image: "mongo"
+		volumes: 
+			- data:/data/db:ro
+		environment: 
+			# My comment!!
+			MONGODB_ROOT_USERNAME: root	
+			# Or: - MONGODB_ROOT_USERNAME=root	
+		env_file:
+			- ./env/mongo.env
+		# Optional:
+		networks:
+			- my_net
+	backend:
+		build: ./backend
+		# OR
+		#build:
+			#context: ./backend # dir in which image is generated and dockerfile is found
+			#dockerfile: Dockerfile # optional d-file name
+		ports:
+			- "80:80"
+		volumes:
+			- logs:/app/logs # named vol	
+			- ./backend:/app # bind mount
+			- /app/node_modules # anon vol
+		depends_on:
+			- mongodb
+	frontend:
+		build: ./frontend
+		ports:
+			- "3000:3000"
+		volumes:
+			- ./frontend/src:/app/src
+		stdin_open: true # -i
+		tty: true # -t
+		depends_on:
+			- backend
+# Must list named volumes to create.. Diff cntrs can share same volume if configured as such
+volumes:
+	data: 
+	logs:
+
+Commands:
+docker-compose up [-d] # creates everything and cntrs..optionally start in detached mode
+docker-compose down [-v] # shuts everything down..optionally deletes volume
+docker-compose up --build # build everytime (even if img has been built before)
+docker-compose build # build without running cntr

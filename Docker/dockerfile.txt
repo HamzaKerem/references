@@ -22,3 +22,46 @@ CMD ["node", "server.js"] # do not execute when img is created
 .....
 `docker build .`
 `docker run -p LOCAL_PORT:EXPOSE_PORT IMG_ID` -p for publish
+
+FROM node:TAG # i.e. node:14.9.0-stretch
+docker build -t IMG_NAME:TAG . # i.e. myshell:latest
+
+~~~~~~~~~~~~
+FROM node:12
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+EXPOSE 80
+CMD ["node", "server.js"]
+~~~~~~~~~~
+
+.dockerignore # Files listed in this file are ignored by Dockerfile
+Example content:
+Dockerfile
+.git
+
+Env vars (in dockerfile):
+...
+ENV PORT 80
+EXPOSE $PORT
+...
+OR
+docker run .... --env PORT=8000
+OR (in .env file)
+PORT=8000
+..
+docker run --env-file ./.env
+
+DO NOT INCLUDE PRIVATE DATA DIRECTLY IN THE DOCKERFILE
+`docker history IMG` see img history # will show private data from dockerfile if existent
+Instead use `--env-file credentials.env` and do not source control credentials.env
+
+Build time args:
+....
+FROM ...
+ARG DEFAULT_PORT=80
+..
+ENV PORT $DEFAULT_PORT
+....
+docker run ... --build-arg DEFAULT_PORT=666

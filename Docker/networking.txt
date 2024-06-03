@@ -1,0 +1,72 @@
+types of communication:
+cntr ->*communication request*-> local machine 
+cntr ->*communication request*-> remote DB/src (WWW connections work out the box)
+cntr-A ->*communication request*-> cntr-B (i.e. hosts SQL DB)
+
+example:
+mongodb://host.docker.internal:27017/dir # connects to db hosted by local host machine via
+special domain host.docker.internal # NOT TO DB THAT'S DOCKERIZED!!!
+
+docker run --name mongo_cntr -d mongo
+docker inspect mongo_cntr | grep IPAddress | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1
+# gets mongodb cntr IP
+
+Modify source code:
+mongodb://127.17.0.2:27017/dir # connects to mongodb cntr
+
+Creating docker container networks: docker network create NETWORK # create
+network docker network ls # list networks docker run --network NETWORK ... #
+run cntr as part of NETWORK Modify source code:
+mongodb://my_monogdb_cntr:27017/dir # connects to my_mongodb_cntr running in
+NETWORK (w/o specifying IP)
+
+Docker Networks actually support different kinds of "Drivers" which influence
+the behavior of the Network. The default driver is the "bridge" driver,
+containers can find each other by name if they are in the same Network.
+"bridge" is the most useful driver, generally speaking.
+
+The driver can be set when a Network is created, simply by adding the --driver option.
+docker network create --driver bridge my-net # default behaviour ("bridge" driver)
+
+host: For standalone containers, isolation between container and host system is
+removed (i.e. they share localhost as a network)
+
+overlay: Multiple Docker daemons (i.e. Docker running on different machines) 
+are able to connect with each other. (deprecated)
+
+macvlan: You can set a custom MAC address to a container - this address can
+then be used for communication with that container
+
+none: All networking is disabled.
+
+Third-party plugins: You can install third-party plugins which then may add all
+kinds of behaviors and functionalities
+
+docker network connect my_bridge_network CNTR # connect cntr to my_net
+# See docker inspect cntr: my_bridge_network and DNSNames
+# Test connection between containers:
+docker container exec -it backend_cntr ping mongo_cntr
+# If ping is not found:
+docker container exec -it backend_cntr bash
+apt update
+apt install iputils-ping
+
+EXAMPLE:
+docker run --name mongo_cntr -d -p 27017:27017 -v data:/data/db mongo
+# docker network connect my_bridge_network mongo_cntr # connect cntr to my_net
+# OR docker run --network my_bridge_network --name mongo_cntr -d mongo
+# To test without docker run `npm install` and `[sudo] node app.js`
+# where connection request looks like mongodb://localhost:27017/DIR
+# A) enter mongo_cntr IP: mongodb://172.17.0.2:27017/DIR
+# OR
+# B) enter mongo_cntr DNS name: mongodb://mongo_cntr:27017/DIR
+docker build -t backend_img .
+docker run --name backend_cntr -p 80:80 --rm backend_img \
+	-v "$(pwd):/app" -v logs:/app/logs -v /app/node_modules
+	# bind mount local dir to named volume "logs", do not overwrite anon volume "node_modules"
+# OR: docker run --network my_bridge_network --name backend_cntr -p 80:80 --rm backend_img
+# Build frontend with CMD statement CMD ["npm", "start"].. Use `-it` when running
+docker run --network my_bridge_network --rm -it --name frontend_cntr -p 3000:3000 frontend_img
+# NOTE: No need to publish ports when a network is passed
+# For frontend keep await fetch('http://localhost/goals'); because it uses browser-side js
+# Actually can remove --network option for front-end as well since it's all browser side

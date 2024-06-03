@@ -1,0 +1,34 @@
+Volumes connect some folder outside of a container to a folder inside of a
+container.  Volumes are folders on your host machine hard drive which are
+mounted into containers. Volumes persists if a cntr shuts down. If a container
+starts/restarts, mounted volume is available to the cntr.
+
+...
+VOLUME [ "/app/feedback" ] # Anonymous volume (deleted when container shuts down aka rm'd)
+...
+CMD ...
+
+Then see localhost:3000/feedback/FILE.txt
+
+Two types of external data storage:
+-volumes: managed by docker (inside the docker container)
+-bind mounts: managed by user/admin (linked to dir. on local machine, changes to 
+container FS are applied to local FS and vice versa)
+
+Volume commands:
+docker volume ls # list volumes
+docker volume rm VOL_NAME
+docker volume rm prune
+docker volume create VOL
+
+docker run .... -v VOL_NAME:/CNTR_FILEPATH IMG # Named volumes:
+i.e. my-vol:/app/feedback (still exists when cntr deleted & can be shared accross cntrs)
+docker run .... -v CNTR_FILEPATH IMG # anon volumes (same as VOLUME command in dockerfile)
+can't be shared accross cntrs
+docker run .... -v HOST_PATH:CNTR_PATH IMG # bind mount i.e. $(pwd):/app/feedback 
+(uses absoloute path)
+
+Use bind mount when you want to provide live data to the cntr (no rebuilding necessary)
+
+By default volumes are r-w
+docker run .... -v HOST_PATH:CNTR_PATH:ro IMG # r-o bind mount
