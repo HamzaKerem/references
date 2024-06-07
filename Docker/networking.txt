@@ -70,3 +70,6 @@ docker run --network my_bridge_network --rm -it --name frontend_cntr -p 3000:300
 # NOTE: No need to publish ports when a network is passed
 # For frontend keep await fetch('http://localhost/goals'); because it uses browser-side js
 # Actually can remove --network option for front-end as well since it's all browser side
+
+Note: network driver can be thought of as network type. Also custom networks
+will show as interfaces

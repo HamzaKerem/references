@@ -1,0 +1,41 @@
+docker exec -it my_cntr CMD # Execute a command (i.e. bash) in a running container
+docker run -it node-util npm init # no need to use 'CMD ["...	' since command is specificed
+# if CMD statement is added in dockerfile, it's overwritten..
+
+in dockerfile:
+...
+ENTRYPOINT [ "npm" ]
+...
+docker run -it -v "$(pwd):/app" mynpm install # continues from ENTRYPOINT statement
+
+======================================
+DEPLOYMENT aka running cntrs on remote machines
+=====================================
+
+Bind mounts should't be used in production.. It's best to build imgs on local devices,
+push to docker hub.. pull on remote machine and run
+
+Push a new image to a registry exmample:
+docker image tag rhel-httpd:latest registry-host:5000/myadmin/rhel-httpd:latest
+docker image push registry-host:5000/myadmin/rhel-httpd:latest
+
+A virtual private cloud (VPC) is a
+secure, isolated private cloud hosted within a public cloud. AWS ECS is just a
+logical grouping (cluster) of EC2 instances, and all the EC2 instances part of
+an ECS act as Docker host i.e. ECS can send command to launch a container on
+them (EC2). EC2 - is simply a remote (virtual) machine. ECS stands for Elastic
+Container Service. In AWS fully managed services, AWS manages the servers,
+storage, OS, databases, and other critical resources fundamental to service
+infrastructure ... no sys admin experience is required..the configuration is done through
+a massively simple web interface.
+
+A load balancer is a device or service that distributes network or application
+traffic across resources to support an application.  A security group controls
+the traffic that is allowed to reach and leave the resources that it is
+associated with. For example, after you associate a security group with an EC2
+instance, it controls the inbound and outbound traffic for the instance.
+When you create a VPC, it comes with a default security group. You can create
+additional security groups for a VPC, each with their own inbound and outbound
+rules. You can specify the source, port range, and protocol for each inbound
+rule. You can specify the destination, port range, and protocol for each
+outbound rule. Note: EFS refers to elastic file system.
