@@ -1,0 +1,34 @@
+Deployment refers to the process of taking a software application or system
+from a development or testing environment and making it available for use in a
+live or production environment. This involves several steps, including:
+Building: Compiling the source code into executable form.
+Testing: Ensuring the code functions as expected through various tests.
+Packaging: Creating a package or container that includes the software and its dependencies.
+Releasing: Moving the package to the production environment.
+Configuring: Setting up the necessary environment variables, configurations, and settings.
+Monitoring: Continuously monitoring the deployed application for performance and errors.
+
+Publishing often refers to making software or its components available for
+others to use, typically in a more distributed or widespread manner. This can
+involve: 
+Documentation: Writing user guides, API documentation, and release
+notes.  
+Distribution: Uploading the software to a repository or store where it
+can be accessed or downloaded by others (e.g., npm for JavaScript packages,
+PyPI for Python packages, App Store for mobile apps).  
+Versioning: Assigning a version number to the software and managing its lifecycle.  
+Promotion: Marketing or announcing the software to inform potential users about its
+availability.
+
+Manual deployment of containers is hard to mantain, error-prone and annoying.🤑🤑
+It might be neccessary to scale the number of running cntr instances up or down as workload / 
+traffic increases or decreases. Furthermore, incoming traffic should be distributed equally.
+Load  balancer helps with incoming traffic being equally distributed.
+
+Using a specific cloud provider locks us in to that service...switching to
+another provider will require learning about the specifics of that cloud provider.
+
+Kubernetes is the standard for orchestrating cntr deployments. Kubernetes
+allows for setting up the desired architecture on a cluster of machines.. It's
+not just a single software, its a collection of concepts and tools. Kubernetes
+can be thought of Docker-compose for multiple machines.

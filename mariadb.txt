@@ -1,0 +1,56 @@
+mysql (predecessor to mariadb) is now a symlink to mariadb. 
+MariaDB is the default implementation of MySQL in Arch Linux.
+
+Grant tables in MariaDB (and MySQL) are special tables that store information
+about user accounts, their privileges, and how these privileges are applied to
+different database objects. These tables are part of the mysql system database
+and are crucial for managing access control and security within the database
+server.
+
+Initialize the MariaDB Data Directory:
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+Then enable & start mariadb
+sudo systemctl enable --now mariadb
+
+Secure the MariaDB Installation:
+sudo mariadb-secure-installation
+
+Login to MariaDB Monitor
+sudo mariadb -u root -p
+
+Create DB, user, grant privileges, reload the grant tables
+CREATE DATABASE mydatabase;
+CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypassword';
+GRANT ALL PRIVILEGES ON mydatabase.* TO 'myuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+use mydatabase; # use DB
+
+# Create books table
+CREATE TABLE IF NOT EXISTS books (
+  BookID INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  Title VARCHAR(100) NOT NULL, 
+  SeriesID INT, AuthorID INT);
+
+# Create authors table
+CREATE TABLE IF NOT EXISTS authors 
+(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT);
+
+# Create series table
+CREATE TABLE IF NOT EXISTS series 
+(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT);
+
+# insert values into respective tables
+INSERT INTO books (Title,SeriesID,AuthorID) 
+VALUES('The Fellowship of the Ring',1,1), 
+      ('The Two Towers',1,1), ('The Return of the King',1,1),  
+      ('The Sum of All Men',2,2), ('Brotherhood of the Wolf',2,2), 
+      ('Wizardborn',2,2), ('The Hobbbit',0,1);
+
+# display all tables
+SHOW TABLES;
+
+# Show info about specific table
+DESCRIBE books; 

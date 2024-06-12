@@ -39,3 +39,7 @@ additional security groups for a VPC, each with their own inbound and outbound
 rules. You can specify the source, port range, and protocol for each inbound
 rule. You can specify the destination, port range, and protocol for each
 outbound rule. Note: EFS refers to elastic file system.
+
+...
+multi cntr projects might need to be split across multiple host machines.
+containerized apps *might* need a build step.

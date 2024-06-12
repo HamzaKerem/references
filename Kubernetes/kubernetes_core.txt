@@ -1,0 +1,33 @@
+A pod is the smallest possible configurable unit (in the k8s world) that holds
+a cntr & cntr resources (i.e. volumes). Worker nodes hold pod(s) that run the
+cntrs of the application. Nodes are real or virtual machines. The Master Node
+controls all worker nodes and thus controls all deployment. With all of the
+nodes combined, including master node, there is a cluster that operates under
+the same network. Then the master node sends instructions to the Cloud Provider
+API to be able to replicate the desired orchestration and architecture.
+
+The sys admin will need to create the cluster and node instances, setup API
+server, K8s SW on nodes, create other cloud provider resources such as load
+balancer, determined File sys, etc. K8s will then create the objects (e.g.
+pods) and manage them, monitor & scale them, and apply provided cloud resources
+to reach desired configuration goals. 
+
+Kube-proxy is a network proxy that runs on each node in a Kubernetes cluster,
+facilitating communication between different nodes and services. Kube-proxy
+enables services to be discovered within the Kubernetes cluster. It uses the
+Kubernetes API to watch for changes in service and endpoint objects. Kube-proxy
+enables services to be discovered within the Kubernetes cluster. It uses the
+Kubernetes API to watch for changes in service and endpoint objects. 
+
+kubelet is like a diligent caretaker that ensures your application's containers
+are always running smoothly on each node in a Kubernetes cluster. It receives
+instructions from the central Kubernetes system about which containers should
+be running and monitors them to ensure they are healthy and working as
+expected. If a container crashes or isn't behaving correctly, kubelet will
+restart it or take other actions to fix the issue.
+
+The most important service running in the master node is the API server (which
+kubelets communicate with). Scheduler watches for new pods & selects worker
+nodes to run them on. Kube-controller Manager watches & controls worker nodes &
+ensures correct number of pods. Cloud-controller Manager knows how to interact
+with Cloud Provider resources.
