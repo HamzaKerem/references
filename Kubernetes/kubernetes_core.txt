@@ -6,7 +6,7 @@ nodes combined, including master node, there is a cluster that operates under
 the same network. Then the master node sends instructions to the Cloud Provider
 API to be able to replicate the desired orchestration and architecture.
 
-The sys admin will need to create the cluster and node instances, setup API
+The sys admin will need to create the cluster and node instances, set up API
 server, K8s SW on nodes, create other cloud provider resources such as load
 balancer, determined File sys, etc. K8s will then create the objects (e.g.
 pods) and manage them, monitor & scale them, and apply provided cloud resources
@@ -14,8 +14,6 @@ to reach desired configuration goals.
 
 Kube-proxy is a network proxy that runs on each node in a Kubernetes cluster,
 facilitating communication between different nodes and services. Kube-proxy
-enables services to be discovered within the Kubernetes cluster. It uses the
-Kubernetes API to watch for changes in service and endpoint objects. Kube-proxy
 enables services to be discovered within the Kubernetes cluster. It uses the
 Kubernetes API to watch for changes in service and endpoint objects. 
 
@@ -30,4 +28,18 @@ The most important service running in the master node is the API server (which
 kubelets communicate with). Scheduler watches for new pods & selects worker
 nodes to run them on. Kube-controller Manager watches & controls worker nodes &
 ensures correct number of pods. Cloud-controller Manager knows how to interact
-with Cloud Provider resources.
+with Cloud Provider resources. Services may refer to a logical set of pods with
+a unique & independent IP addr.
+
+kubectl is the tool used to send instructions to the cluster by communicating
+the instructions to the master nodes. Minikube is a tool that allows you to run
+a single-node Kubernetes cluster on your local machine. It is designed to be an
+easy and quick way to get started with Kubernetes, making it possible to
+experiment with and develop Kubernetes applications in a local environment. 
+
+Important Note: pods are non-persistent. K8s will start, stop, replace as needed.
+
+The "Deployment" object controls pods..  A "Service" obj allows for reaching a
+pod.. it's responsible for exposing pods to other pods in the cluster and
+visitors outside of the cluster. Pods have an internal IP by default, it
+changes when a pod is replaced. Services group Pods with a shared IP. 

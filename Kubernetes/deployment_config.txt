@@ -1,0 +1,29 @@
+create a deployment.yaml file:
+
+apiVersion: apps/v1
+kind: Deployment # set obj type: Deployment, Service, Job, etc.
+metadata: 
+  name: second-app-deployment # https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#objectmeta-v1-meta
+spec: # this spec refers to the config. of deployment
+  replicas: 3 # 3 equal pods containing the same cntr
+  selector: # 
+    matchLabels:
+      app: second-app # tells deployment obj to control this pod w/ the corresponding
+      # key and value
+      tier: backend
+      
+
+  template: # define the pod object to create
+    metadata:
+      labels:
+        app: second-app # add a (key) label named "app" and value "second-app"
+        tier: backend # can have multiple labels. key and value name is arbitrary
+    spec: 
+      containers:  
+        - name: second-nodejs
+          image: USERNAME/REPO
+
+Remember that a deployment object continously watches for all pods and sees which it
+should control. Selects the pods to control accoriding to a a "selector"
+
+kubectl apply -f=deployment.yaml

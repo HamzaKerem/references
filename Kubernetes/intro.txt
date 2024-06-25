@@ -23,7 +23,7 @@ availability.
 Manual deployment of containers is hard to mantain, error-prone and annoying.🤑🤑
 It might be neccessary to scale the number of running cntr instances up or down as workload / 
 traffic increases or decreases. Furthermore, incoming traffic should be distributed equally.
-Load  balancer helps with incoming traffic being equally distributed.
+Load balancer helps with incoming traffic being equally distributed.
 
 Using a specific cloud provider locks us in to that service...switching to
 another provider will require learning about the specifics of that cloud provider.

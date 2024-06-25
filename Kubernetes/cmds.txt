@@ -1,0 +1,44 @@
+minikube start 
+
+minikube delete # delete local kubernetes cluster (do this if unable to start)
+
+minikube status # check minikube status..output below when running:
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+# create a deployment obj from specified img:
+kubectl create deployment APP_NAME --image=DOCKERHUB_USERNAME/IMG 
+
+kubectl get pods # display pods.. X/X READY might take a minute
+
+minikube dashboard # launches dashboard in browser
+
+kubectl expose deployment APP --type=TYPE --port PORT # create service
+# TYPE can be
+# ClusterIP: only reachable inside the cluster
+# NodePort: expose the IP via worker node (accessible to the outside)
+
+kubectl get services # see created service (only lists internal IP)
+
+minikube service APP # shows external IP & port
+
+kubectl scale deployment/APP --replicas=NUM # where a replica is a pod+cntr instance
+
+kubectl delete OBJ_TYPE OBJ # i.e. kubectl delete services app1; kubectl delete deployments app2
+
+kubectl set image deployment/APP CNTR_NAME=USERNAME/IMG # update the cntr w/ the new img
+# where APP is name of deployment and the container name can be found via `minikube dashboard`
+
+kubectl rollout status deployment/APP # see rollout status
+
+kubectl rollout undo deployment/APP # undo rollout
+
+kubectl rollout history deployment/APP # see revisions
+
+kubectl rollout history deployment/APP --revision=NUM # see specific revision
+
+kubectl rollout undo deployment/APP --to-revision=NUM # undo to specific revision

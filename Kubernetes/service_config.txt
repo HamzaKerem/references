@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: second-app # add labels to select. No need for "matchLabels"
+    tier: backend
+    ports:
+      - protocol: 'TCP'
+        port: 80
+        targetPort: 8080
+        # can add multiple ports:
+#      - protocol: 'TCP' 
+#        port: 443
+#        targetPort: 443
+    type: LoadBalancer # commonly used for outside world access
+    # ClusterIP is default, NodePort is used for exposing the Worker Node
+
+create service:
+kubectl apply -f=service.yaml
+
+The declarative approach (by using yaml configs) is preferred over `kubectl` commands
+when creating objects since it's easier to maintain, more structered, and less error prone.
