@@ -8,9 +8,13 @@ spec: # this spec refers to the config. of deployment
   replicas: 3 # 3 equal pods containing the same cntr
   selector: # 
     matchLabels:
-      app: second-app # tells deployment obj to control this pod w/ the corresponding
-      # key and value
+      app: second-app # tells deployment obj to control this pod w/ the 
+      # corresponding key and value
       tier: backend
+    # Can also use the following as an alternative:
+    # Available operators are In, NotIn, etc.
+    matchExpressions:
+      - {key: app, operator: In, values: [second-app, first-app]}
       
 
   template: # define the pod object to create
@@ -22,6 +26,41 @@ spec: # this spec refers to the config. of deployment
       containers:  
         - name: second-nodejs
           image: USERNAME/REPO
+          env:
+            - name: MYDIR # MYDIR env var
+              value: 'story'
+              # Or use:
+              valueFrom: 
+                configMapKeyRef: 
+                  # from "name" key in environment.yaml
+                  name: data-store-env 
+                  # which value to set as the name for "story" folder:
+                  key: folder
+          volumeMounts:
+            - mountPath: /app/story # define mount path for vol.
+              name: myvol
+          # The following defines how k8s should verify whether the cntr
+          # is up and running
+          livenessProbe: 
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 3
+            initialDelaySeconds:
+        # Define volumes as the following:
+        volumes:
+          - name: myvol
+            # This is for regular volumes:
+            emptyDir: {} # does not need special config options
+            # OR
+            hostPath:
+              path: /data
+              # create dir defined as path if not existent:
+              type: DirectoryOrCreate 
+            # This is for persistent volumes:
+            persistentVolumeClaim:
+              claimName: host-pvc
+
 
 Remember that a deployment object continously watches for all pods and sees which it
 should control. Selects the pods to control accoriding to a a "selector"

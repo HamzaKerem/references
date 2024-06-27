@@ -2,10 +2,11 @@ Simply rerun `kubectl apply -f=FILE` for changes to be made to object
 once the config (yaml) file has been modified.
 
 Delete obj:
-kubectl delete OBJ
+kubectl delete OBJ_TYPE OBJ
 # or
 kubectl delete -f=FILE.. # deletes resources created based on file
-
+# or
+kubectl delete OBJ_TYPE -l KEY=VALUE # delete obj w/ the corresponding labels
 Can have multiple service definitions in a config file, meaning
 master-deployment.yaml can contain contents of deployment.yaml and
 service.yaml. Best practice to put service first. Must use `---` syntax.

@@ -18,7 +18,7 @@ can be accessed or downloaded by others (e.g., npm for JavaScript packages,
 PyPI for Python packages, App Store for mobile apps).  
 Versioning: Assigning a version number to the software and managing its lifecycle.  
 Promotion: Marketing or announcing the software to inform potential users about its
-availability.
+availability.🍇🍈🩺
 
 Manual deployment of containers is hard to mantain, error-prone and annoying.🤑🤑
 It might be neccessary to scale the number of running cntr instances up or down as workload / 

@@ -8,7 +8,7 @@ API to be able to replicate the desired orchestration and architecture.
 
 The sys admin will need to create the cluster and node instances, set up API
 server, K8s SW on nodes, create other cloud provider resources such as load
-balancer, determined File sys, etc. K8s will then create the objects (e.g.
+balancer, determine File sys, etc. K8s will then create the objects (e.g.
 pods) and manage them, monitor & scale them, and apply provided cloud resources
 to reach desired configuration goals. 
 
@@ -42,4 +42,6 @@ Important Note: pods are non-persistent. K8s will start, stop, replace as needed
 The "Deployment" object controls pods..  A "Service" obj allows for reaching a
 pod.. it's responsible for exposing pods to other pods in the cluster and
 visitors outside of the cluster. Pods have an internal IP by default, it
-changes when a pod is replaced. Services group Pods with a shared IP. 
+changes when a pod is replaced; yet a service object assigns pods a 
+stable IP & grants the pod outside world access. Services group Pods 
+with a shared IP. 

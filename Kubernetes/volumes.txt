@@ -1,0 +1,31 @@
+K8s can mount volumes into cntrs. Volumes are attached to pods
+and are pod specific. All cntrs in that one pod which the vol.
+is attached to will be able to used that vol.
+
+K8s supports many drivers and types regarding volumes but volumes are
+not always persistent, unlike named vols in Docker.
+
+Volume types:
+emptyDir: creates new empty dir whenever pod starts and fills w/
+data as long as pod is alive. Cntr starts/restarts etc. volume is unaffected
+yet if the pod is killed, volume is emptied. Survives cntr restart but not 
+pod restart.
+hostPath: is similiar to bind mount in which the path to be mounted on to
+the pod is a path defined on the host machine. Has multiple type options
+such as Directory and DirectoryOrCreate
+csi (Cntr Storage Interface): is very flexible..it defines an interface which
+any built driver solutions that can utilize the interface can be used
+
+Persistent Volumes are entities inside the cluster that are independent of 
+pods and nodes. Persistent Volume Claims are entities inside of pods that 
+point to Persistent Volumes. PV's don't store data on the nodes!
+
+"Normal" volumes:
+- Attached to pod & pod lifecycle
+- Defined & created with pod
+- repetetive and hard to administer on global level
+
+Persistent volumes:
+- is a standalone cluster resource
+- created standalone, claimed via PVC
+- can be defined once and used multiple times

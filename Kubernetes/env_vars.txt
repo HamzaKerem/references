@@ -1,0 +1,3 @@
+# environment.yaml:
+apiVersion: v1
+kind: ConfigMap
