@@ -1,3 +1,13 @@
 # environment.yaml:
 apiVersion: v1
 kind: ConfigMap
+metadata:
+  name: data-store-env
+data:
+  # Each key-value pair here will become an environment variable 
+  # in any pods that reference this ConfigMap:
+  folder: 'story'
+
+
+Note:SERVICE_NAME_SERVICE_HOST env var hosts service IP address.
+i.e. for users-service: USERS_SERVICE_SERVICE_HOST

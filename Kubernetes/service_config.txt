@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend
-spec:
+spec: # defines configuration of the service object
   selector:
     app: second-app # add labels to select. No need for "matchLabels"
     tier: backend
@@ -22,3 +22,6 @@ kubectl apply -f=service.yaml
 
 The declarative approach (by using yaml configs) is preferred over `kubectl` commands
 when creating objects since it's easier to maintain, more structered, and less error prone.
+
+Service config is more simpler compared to deployment config (which is more
+extensive / powerful).

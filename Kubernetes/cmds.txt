@@ -42,3 +42,5 @@ kubectl rollout history deployment/APP # see revisions
 kubectl rollout history deployment/APP --revision=NUM # see specific revision
 
 kubectl rollout undo deployment/APP --to-revision=NUM # undo to specific revision
+
+kubectl get namespaces # get namespaces

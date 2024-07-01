@@ -29,6 +29,9 @@ spec: # this spec refers to the config. of deployment
           env:
             - name: MYDIR # MYDIR env var
               value: 'story'
+            - name: AUTH_ADDRESS
+              # service name + '.' + namespace (CoreDNS for networking):
+              value: "auth-service.default" 
               # Or use:
               valueFrom: 
                 configMapKeyRef: 
@@ -63,6 +66,6 @@ spec: # this spec refers to the config. of deployment
 
 
 Remember that a deployment object continously watches for all pods and sees which it
-should control. Selects the pods to control accoriding to a a "selector"
+should control. Selects the pods to control accoriding to a "selector"
 
 kubectl apply -f=deployment.yaml
