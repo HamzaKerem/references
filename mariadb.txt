@@ -19,7 +19,7 @@ sudo mariadb-secure-installation
 Login to MariaDB Monitor
 sudo mariadb -u root -p
 
-Create DB, user, grant privileges, reload the grant tables
+# Create DB, user, grant privileges, reload the grant tables:
 CREATE DATABASE mydatabase;
 CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypassword';
 GRANT ALL PRIVILEGES ON mydatabase.* TO 'myuser'@'localhost';
@@ -54,3 +54,82 @@ SHOW TABLES;
 
 # Show info about specific table
 DESCRIBE books; 
+
+# Non-interactive use:
+You can execute SQL statements in a script file (batch file) like this:
+mysql db_name < script.sql > output.tab
+
+# Or run commands as
+mariadb DB -u USER -p <<< "show tables;"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+REMOTE CONNECTIONS
+
+# Allow for remote connections by adding the following to /etc/my.cnf:
+[mysqld]
+skip-networking=0
+skip-bind-address
+
+
+Users in MariaDB are defined as 'user'@'host', so 'chadmaynard'@'localhost' 
+and 'chadmaynard'@'1.1.1.1' (or 'chadmaynard'@'server.domain.local') are 
+different users that can have completely different permissions and/or 
+passwords. To allow connections from any IP address, use % as IP (where
+% is a wildcard).
+
+# Show all allowed remote connections
+SELECT User, Host FROM mysql.user WHERE Host <> 'localhost';
+
+# Grant privileges to user with IP & allow for remote con.
+GRANT ALL PRIVILEGES ON *.* TO 'USER'@'IP' IDENTIFIED BY 'PASSWD' WITH GRANT OPTION;
+
+# open port 3306 for tcp con.
+sudo ufw allow 3306/tcp
+
+# Where HOST_IP is localhost or loopback addy if on same machine
+mariadb -P 3306 -h HOST_IP -u USER -p -D DB 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Importing DBs
+
+See the .sql file to see what the name of the created DB
+will be, i.e.:
+CREATE DATABASE `world` DEFAULT CHARACTER SET utf8mb4;
+USE `world`;
+
+# import DB as root
+mariadb -u root -p < world.sql
+
+# Create user & grant privileges as root
+mariadb world -u root -p
+...
+CREATE USER...
+GRANT PRIVILEGES...
+FLUSH PRIVILEGES...
+EXIT..
+
+# Log into DB as USER
+mariadb world -u USER -p
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+USING AS DOCKER CNTR
+
+# Create mariadb-net network
+docker network create mariadb-net
+
+# initialize server cntr w/ root pass $ROOT_PASS
+mariadb run --network mariadb-net -d --rm --name mariadb-server -p 3307:3306 \
+  --env MARIADB_ROOT_PASSWORD="$ROOT_PASS" mariadb:latest
+
+# copy DB to /var/local in cntr
+docker cp db.sql mariadb-server:/var/local/
+
+docker exec -it mariadb-server bash
+$ mariadb -u USER -p < /var/local/db.sql
+
+# connect client cntr to mariadb server instance
+docker run -it --rm --name mariadb-client mariadb:latest \
+  mariadb -P 3307 -h IP -u USER -p -D DB
+
+# connect client cntr to mariadb server cntr instance on same machine
+# DO NOT ENTER PORT
+docker run -it --network mariadb-net --rm --name mariadb-client \
+  mariadb:latest mariadb -h mariadb-server -u USER -p -D DB
