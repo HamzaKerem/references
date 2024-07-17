@@ -1,0 +1,15 @@
+OpenVPN is a robust and highly flexible VPN daemon. 
+It supports SSL/TLS security, Ethernet bridging, TCP or UDP tunnel 
+transport through proxies or NAT.Additionally it has support for dynamic IP 
+addresses and DHCP, scalability to hundreds or thousands of users, and 
+portability to most major OS platforms. OpenVPN is tightly bound to the 
+OpenSSL library, and derives much of its crypto capabilities from it. 
+It supports conventional encryption using a pre-shared secret key 
+(Static Key mode) or public key security (SSL/TLS mode) using client & 
+server certificates. Additionally it supports unencrypted TCP/UDP tunnels. 
+
+OpenVPN requires TUN/TAP support, which is already configured in the 
+default kernel. Users of custom kernel should make sure to enable the 'tun'
+module.
+
+sudo openvpn FILE.ovpn
