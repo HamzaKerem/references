@@ -13,3 +13,88 @@ default kernel. Users of custom kernel should make sure to enable the 'tun'
 module.
 
 sudo openvpn FILE.ovpn
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Install openvpn for distro
+2. Generate the master Certificate Authority (CA) certificate & key
+  A) Install EasyRSA
+  apt install easy-rsa
+
+  B) Initialize the Public Key Infrastructure (PKI)
+  /usr/share/easy-rsa/easyrsa init-pki # run as non-priv'd user
+  # Your newly created PKI dir is: /home/$USER/pki
+
+  C) Build the CA (Certificate Authority)
+  /usr/share/easy-rsa/easyrsa build-ca
+  # Set password and Common Name (i.e. ubuntu-openvpn)
+  # Following will be generated:
+  # public: /home/$USER/pki/ca.crt
+  # private: /home/$USER/pki/private/ca.key
+
+3. Generate certificate & key for server
+  A) Build the Server Certificate & Key
+  easyrsa gen-req ubuntu-openvpn nopass
+  # set same Common Name as CA
+  # Keypair and certificate request completed. Your files are:
+
+  B) Sign the Server Certificate with Your CA
+  easyrsa sign-req server ubuntu-openvpn
+  # enter ca.key passwd
+
+  C) Copy the following files to your OpenVPN configuration directory
+  sudo cp pki/private/ubuntu-openvpn.key /etc/openvpn/
+  sudo cp pki/issued/ubuntu-openvpn.crt /etc/openvpn/
+  sudo cp pki/ca.crt /etc/openvpn/
+
+
+4. Generate certificates & keys for clients
+  A) Generate Certificate Requests and Keys for Each Client
+  easyrsa gen-req client_0001 nopass
+  # enter common name client_0001
+
+  B) Sign the Certificate Requests for Each Client
+  easyrsa sign-req client client_0001
+  # enter 'yes' and ca.key passwd
+  # Certificate created at: /home/frostline/pki/issued/client_0001.crt
+
+  C) Verify the Client Certificates
+  openssl x509 -in pki/issued/client_0001.crt -noout -text | grep "Subject:"
+  # Subject: CN = client_0001
+
+  D) Copy the Certificates to the openvpn Directory
+  if [ ! -d /etc/openvpn/client_0001 ]; then
+      sudo mkdir -p /etc/openvpn/client_0001
+  fi
+  sudo cp pki/issued/client_0001.crt /etc/openvpn/client_0001/
+  sudo cp pki/private/client_0001.key /etc/openvpn/client_0001/
+  sudo cp pki/ca.crt /etc/openvpn/client_0001/
+
+5. Generated the TLS authentication key
+  sudo openvpn --genkey secret /etc/openvpn/ta.key
+
+6.
+# Server Configuration with ECDH
+port 1194
+proto udp
+dev tun
+
+# Enable ECDH for key exchange
+ecdh-curve prime256v1
+
+ca /etc/openvpn/ca.crt
+cert /etc/openvpn/ubuntu-openvpn.crt
+key /etc/openvpn/ubuntu-openvpn.key
+
+server 10.8.0.0 255.255.255.0
+ifconfig-pool-persist ipp.txt
+
+keepalive 10 120
+tls-auth /etc/openvpn/ta.key 0   # Optional but recommended for extra security
+cipher AES-256-GCM               # Modern encryption cipher
+user nobody
+group nogroup
+persist-key
+persist-tun
+status /var/log/openvpn-status.log
+log /var/log/openvpn.log
+verb 3
