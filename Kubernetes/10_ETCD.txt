@@ -1,0 +1,13 @@
+ETCD is a distributed reliable key-value store that is Simple, Secure, & Fast.
+Key-value stores exist as seperate documents for indivual objects/entities; if a
+key or value of an object is to be modified it does not affect the rest of the
+files since they stay unmodified.
+
+etcd uses etcdctl as a client. Regarding versions, there is the client version and API version;
+see `etcdctl version`.
+
+etcd is a key component of Kubernetes, acting as the primary data store for the entire cluster. It stores the cluster’s state and configuration data in a distributed and highly available manner.
+Kubernetes is a declarative system, meaning that the desired state of the cluster (e.g., how many Pods should be running, which nodes should be part of the cluster, what configurations apply to services) is maintained centrally. etcd stores this desired state, along with the actual state of various Kubernetes objects.
+Every time you interact with the Kubernetes API (e.g., creating Pods, Services, or Deployments), that information is stored in etcd.
+
+etcd is the single source of truth for the entire Kubernetes cluster. All components in the system, including the kube-apiserver, rely on it for obtaining the current state of the cluster.

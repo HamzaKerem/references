@@ -2,7 +2,7 @@ Simply rerun `kubectl apply -f=FILE` for changes to be made to object
 once the config (yaml) file has been modified.
 
 Delete obj:
-kubectl delete OBJ_TYPE OBJ
+kubectl delete OBJ_TYPE OBJ # kubectl delete my-first-kub-app deployment
 # or
 kubectl delete -f=FILE.. # deletes resources created based on file
 # or
