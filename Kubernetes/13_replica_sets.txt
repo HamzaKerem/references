@@ -1,0 +1,55 @@
+Replica sets are a new implementation of Replication Controllers.
+
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  template:
+    # The following intended info is all from the pod definition yaml file
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+      - name: nginx-controller
+        image: nginx
+  # no longer pod definition after here 
+  replicas: 3
+
+
+---------------------
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  template:
+    # The following intended info is all from the pod definition yaml file
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+      - name: nginx-controller
+        image: nginx
+  # no longer pod definition after here 
+  replicas: 6
+  # specifies how the ReplicaSet identifies the Pods it is responsible for managing:
+  selector:
+    matchLabels:
+      type: front-end

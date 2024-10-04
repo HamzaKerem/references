@@ -11,7 +11,11 @@ pod.
 
 The Node Controller is responsible for monitoring the health and status of nodes in the cluster. It detects when a node becomes unresponsive or fails and marks it as NotReady. If a node is down for an extended period, the controller will initiate the process of migrating pods from the failed node to other healthy nodes to maintain workload availability.
 
-The Replication Controller ensures that the specified number of pod replicas are always running in the cluster. It watches over ReplicaSets and ReplicationControllers and, if a pod fails or is deleted, it automatically creates new pods to match the desired number of replicas defined in the configuration.
+The Replication Controller ensures that the specified number of pod replicas are
+always running in the cluster. It watches over ReplicaSets and
+ReplicationControllers and, if a pod fails or is deleted, it automatically
+creates new pods to match the desired number of replicas defined in the
+configuration. Replication controller can span across nodes.
 
 The Endpoint Controller is responsible for managing endpoint objects, which link Kubernetes services to the appropriate pods. It monitors services and pods to ensure that the correct pods are assigned as endpoints for a service. This ensures that incoming traffic is properly routed to the pods that are supposed to serve it.
 
