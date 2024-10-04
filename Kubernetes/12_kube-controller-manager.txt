@@ -1,0 +1,26 @@
+Controller-manager is responsible for running various control loops that
+regulate the state of the cluster. These control loops continuously monitor the
+state of different resources and take actions to ensure the actual state of the
+cluster matches the desired state as defined in the configuration.
+
+The Node Controller, Replication Controller, Endpoint Controller, Namespace
+Controller, Service Account and Token Controllers, Job Controller are control
+loops or individual controllers that are part of the Kubernetes Controller
+Manager. Commonly, the Controller Manager itself runs as a container within a
+pod.
+
+The Node Controller is responsible for monitoring the health and status of nodes in the cluster. It detects when a node becomes unresponsive or fails and marks it as NotReady. If a node is down for an extended period, the controller will initiate the process of migrating pods from the failed node to other healthy nodes to maintain workload availability.
+
+The Replication Controller ensures that the specified number of pod replicas are always running in the cluster. It watches over ReplicaSets and ReplicationControllers and, if a pod fails or is deleted, it automatically creates new pods to match the desired number of replicas defined in the configuration.
+
+The Endpoint Controller is responsible for managing endpoint objects, which link Kubernetes services to the appropriate pods. It monitors services and pods to ensure that the correct pods are assigned as endpoints for a service. This ensures that incoming traffic is properly routed to the pods that are supposed to serve it.
+
+The Job Controller oversees the execution and completion of jobs in the cluster. It ensures that a specified number of pods are created to perform the job’s task and that the job completes successfully. If a pod fails during execution, the Job Controller will create new pods to retry the job until it succeeds or reaches its failure limit.
+
+The Service Account and Token Controller automatically creates default service accounts for new namespaces and ensures that the associated tokens are created and mounted into the pods that use those service accounts.
+
+The Namespace Controller manages the lifecycle of namespaces in the cluster. When a namespace is deleted, it ensures that all resources (pods, services, secrets, etc.) within that namespace are cleaned up properly.
+
+
+
+In Kubernetes and containerized environments, helper containers (sometimes called sidecar containers) are additional containers that run alongside the main application container within the same pod. These containers assist the main application by performing supplementary tasks or enhancing its functionality. The sidecar container typically performs tasks such as logging, monitoring, or managing configuration and secrets for the main container. Both containers share the same network namespace and can communicate directly via localhost.

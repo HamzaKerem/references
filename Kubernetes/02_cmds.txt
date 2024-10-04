@@ -45,5 +45,6 @@ kubectl rollout undo deployment/APP --to-revision=NUM # undo to specific revisio
 
 kubectl get namespaces # get namespaces
 
+kubectl describe pod POD # describe pod in detail
 
 In Kubernetes, rollout refers to the process of deploying new versions of applications or making changes to the configuration of running applications in a controlled manner. It ensures that changes are gradually applied across the cluster, maintaining availability and minimizing downtime.

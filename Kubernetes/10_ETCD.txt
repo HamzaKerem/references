@@ -11,3 +11,17 @@ Kubernetes is a declarative system, meaning that the desired state of the cluste
 Every time you interact with the Kubernetes API (e.g., creating Pods, Services, or Deployments), that information is stored in etcd.
 
 etcd is the single source of truth for the entire Kubernetes cluster. All components in the system, including the kube-apiserver, rely on it for obtaining the current state of the cluster.
+
+$ kubectl get pods -n kube-system #  list all the pods running in the kube-system namespace
+NAME                               READY   STATUS    RESTARTS       AGE
+coredns-6f6b679f8f-tndjd           1/1     Running   0              108m
+etcd-minikube                      1/1     Running   0              108m
+kube-apiserver-minikube            1/1     Running   0              108m
+kube-controller-manager-minikube   1/1     Running   0              108m
+kube-proxy-mk67c                   1/1     Running   0              108m
+kube-scheduler-minikube            1/1     Running   0              108m
+storage-provisioner                1/1     Running   1 (107m ago)   108m
+
+etcd-minikube is the etcd pod running in the Minikube cluster meaning all of the cluster data (like 
+configurations, status, and metadata about pods, nodes, services, etc.) is
+stored here. It is accessed by the Kubernetes API server using an etcd client to read and write data.

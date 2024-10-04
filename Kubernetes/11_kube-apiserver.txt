@@ -1,0 +1,9 @@
+The Kubernetes API Server is one of the most critical components of the Kubernetes control plane, and it serves as the front end for the Kubernetes control system. It's responsible for exposing the Kubernetes API, which is used by all the other control plane components (and external clients, like kubectl) to interact with and manage the cluster.
+
+The kube-api server is responsible for 
+1) authenticate user
+2) validate request
+3) retrieve data
+4) update etcd 
+5) scheduler
+6) kubelet

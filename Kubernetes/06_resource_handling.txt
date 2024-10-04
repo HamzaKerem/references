@@ -7,6 +7,7 @@ kubectl delete OBJ_TYPE OBJ # kubectl delete my-first-kub-app deployment
 kubectl delete -f=FILE.. # deletes resources created based on file
 # or
 kubectl delete OBJ_TYPE -l KEY=VALUE # delete obj w/ the corresponding labels
+
 Can have multiple service definitions in a config file, meaning
 master-deployment.yaml can contain contents of deployment.yaml and
 service.yaml. Best practice to put service first. Must use `---` syntax.
