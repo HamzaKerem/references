@@ -1,0 +1,24 @@
+Target port refers to internal port the application is running on and NodePort
+refers to the external port
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service-lol
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 80
+    port: 80
+    nodePort: 30008
+
+  selector:
+    app: myapp
+    type: front-end
+
+A NodePort Service makes the application accessible on a static port on each Node in the cluster. With NodePort, Kubernetes will automatically open a port on each Node (the nodePort) and forward any traffic sent to this port to the target port on the Service's Pods.The NodePort value is usually within the range 30000–32767, but it can be customized.
+
+ClusterIP: Only accessible from within the cluster. Other Pods or Services within the same cluster can communicate with this Service, but external access is not available by default. If you don’t specify a type for your Service, Kubernetes creates a ClusterIP Service by default. Useful for internal communications between microservices or between backend and frontend services within the cluster.
+
+Services identify all the pods w/ the corresponding labels and then directs
+network traffic to those pods.

@@ -1,0 +1,48 @@
+Kubernetes namespaces are a way to organize and manage resources within a Kubernetes cluster, allowing you to create virtual clusters within a single physical cluster.
+Namespaces provide a way to separate resources, making it easier to manage different environments (like development, testing, and production) within the same cluster.
+Resources like Pods, Services, and ConfigMaps exist within a specific namespace, and you can think of namespaces as a logical grouping for these resources.
+
+Kubernetes comes with a few predefined namespaces: default, kube-system,
+kube-public, kube-node-lease
+
+FQDN: db-service.dev.svc.cluster.local
+
+db-service: service name
+dev: namespace
+svc: service resource type
+cluster.local: domain
+
+kubectl create -f pod-def.yaml --namespace=dev # specify namespace
+
+Namespace definition:
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev # this is the namespace name
+
+kubectl create namespace dev # imperative way to declare namespace
+
+kubectl get pods -n NAMESPACE # get pods from NAMESPACE
+
+context is a set of access parameters that defines which cluster you are interacting with, along with details about the user and namespace for that interaction. Specifically, a context includes:
+Cluster: The specific Kubernetes cluster you want to connect to.
+User: The credentials or identity used to access the cluster.
+Namespace: The default namespace within the cluster you want to work in.
+
+Minikube is not a context by itself but rather a local Kubernetes cluster.
+kubectl config use-context minikube # switch context
+
+To limit resources in a namespace create a resource quota:
+
+apiVersion: v1
+kind: ResourceQuota
+metada:
+  name: compute-quota # name of the quota
+  namespace: dev # the namespace which will be limited to the quota
+spec:
+  hard:
+    pods: "10"
+    requests.cpu: "4"
+    requests.memory: 5Gi # 5 GibiBytes
+    limits.cpu "10"
+    limits.memory: 10Gi
