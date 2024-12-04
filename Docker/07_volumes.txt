@@ -1,6 +1,6 @@
 Volumes connect some folder outside of a container to a folder inside of a
-container.  Volumes are folders on your host machine hard drive which are
-mounted into containers. Volumes persists if a cntr shuts down. If a container
+container. Volumes are folders on your host machine hard drive which are
+mounted into containers. Named Volumes persists if a cntr shuts down. If a container
 starts/restarts, mounted volume is available to the cntr.
 
 ...

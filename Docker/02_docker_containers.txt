@@ -1,4 +1,4 @@
-`docker run ...` creates a new container
+`docker run IMG` creates a new container
 `docker start CNTR` start cntr (non-interactive, returns to terminal aka detached mode)
 `docker start -a CNTR` start cntr in attached mode (does not accept stdin)
 `docker start -ai CNTR` start cntr in attached and interactive mode
@@ -13,4 +13,3 @@
 `docker cp CNTR:/FILE_PATH FILE` copy file from FILE_PATH in running cntr to FILE
 container (very useful when copying log files to local machine)
 `docker run --name NAME IMG` run container with specified name
-`docker logs cntr` view output logs

@@ -12,7 +12,7 @@ docker run -it -v "$(pwd):/app" mynpm install # continues from ENTRYPOINT statem
 DEPLOYMENT aka running cntrs on remote machines
 =====================================
 
-Bind mounts should't be used in production.. It's best to build imgs on local devices,
+Bind mounts shouldn't be used in production.. It's best to build imgs on local devices,
 push to docker hub.. pull on remote machine and run
 
 Push a new image to a registry exmample:
@@ -30,7 +30,7 @@ infrastructure ... no sys admin experience is required..the configuration is don
 a massively simple web interface.
 
 A load balancer is a device or service that distributes network or application
-traffic across resources to support an application.  A security group controls
+traffic across resources to support an application. A security group controls
 the traffic that is allowed to reach and leave the resources that it is
 associated with. For example, after you associate a security group with an EC2
 instance, it controls the inbound and outbound traffic for the instance.
