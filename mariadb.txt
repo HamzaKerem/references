@@ -106,7 +106,7 @@ GRANT PRIVILEGES...
 FLUSH PRIVILEGES...
 EXIT..
 
-# Log into DB as USER
+# Log into DB "world" as USER
 mariadb world -u USER -p
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,7 +116,7 @@ USING AS DOCKER CNTR
 docker network create mariadb-net
 
 # initialize server cntr w/ root pass $ROOT_PASS
-mariadb run --network mariadb-net -d --rm --name mariadb-server -p 3307:3306 \
+docker run --network mariadb-net -d --rm --name mariadb-server -p 3307:3306 \
   --env MARIADB_ROOT_PASSWORD="$ROOT_PASS" mariadb:latest
 
 # copy DB to /var/local in cntr
@@ -125,7 +125,7 @@ docker cp db.sql mariadb-server:/var/local/
 docker exec -it mariadb-server bash
 $ mariadb -u USER -p < /var/local/db.sql
 
-# connect client cntr to mariadb server instance
+# connect client cntr to mariadb server instance on a different machine
 docker run -it --rm --name mariadb-client mariadb:latest \
   mariadb -P 3307 -h IP -u USER -p -D DB
 
