@@ -21,6 +21,7 @@ kubectl expose deployment APP --type=TYPE --port PORT # create service
 # TYPE can be
 # ClusterIP: only reachable inside the cluster
 # NodePort: expose the IP via worker node (accessible to the outside)
+# The LoadBalancer type relies heavily on cloud provider features and may not work for on-premises Kubernetes clusters unless a compatible load balancer is configured manually.
 
 kubectl get services # see created service (only lists internal IP)
 

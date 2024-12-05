@@ -6,16 +6,16 @@ spec: # defines configuration of the service object
   selector:
     app: second-app # add labels to select. No need for "matchLabels"
     tier: backend
-    ports:
-      - protocol: 'TCP'
-        port: 80
-        targetPort: 8080
-        # can add multiple ports:
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+      # can add multiple ports:
 #      - protocol: 'TCP' 
 #        port: 443
 #        targetPort: 443
-    type: LoadBalancer # commonly used for outside world access
-    # ClusterIP is default, NodePort is used for exposing the Worker Node
+  type: LoadBalancer # commonly used for outside world access
+  # ClusterIP is default, NodePort is used for exposing the Worker Node
 
 create service:
 kubectl apply -f=service.yaml
