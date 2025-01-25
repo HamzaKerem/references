@@ -1,0 +1,21 @@
+Proxmox is an open-source virtualization platform (bare-metal hypervisor) based
+on Debian Linux. It allows users to deploy and manage virtual machines (VMs) and
+containers with ease. Proxmox is widely used in server environments for its
+powerful features, intuitive web interface, and ability to consolidate multiple
+workloads on a single physical host.
+
+Proxmox Virtual Environment (aka VE) can just be flashed to a USB and then
+inserted into server.
+
+Note: you can set hostname to pve.local initially
+
+WEB UI will be accessed through 
+https://IP:8006
+
+Set FS type to ext4 if there is a single disk.
+
+Updates: Click node ("pve"), Updates, Refresh
+No Subscription Repo: Click node, Updates, Repositories, Add,
+"No-Subscription"
+Upgrade: Node -> Updates -> Upgrade
+Reboot: Node -> reboot

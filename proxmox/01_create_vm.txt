@@ -1,0 +1,4 @@
+Upload ISO: Node -> local storage ("local (pve)") -> ISO Images -> Upload
+
+Create VM: Create VM, System: check "Qemu Agent", Disks: check "Discard"
+(for better SSD use), Network: VirtIO
