@@ -1,0 +1,70 @@
+The structure goes as:
+Datacenter = Contains all Proxmox VE servers (nodes)
+  ├── Node = A separate physical machine running a hypervisor
+      ├── LocalNetwork = Network interfaces and bridges configured on the node
+      ├── Local = Local directory-based storage (e.g., `/var/lib/lxc` or `/var/lib/vz`)
+      ├── Local-LVM = LVM-thin storage pool for VM disks and container volumes
+      ├── Shared Storage (Optional) = External storage like NFS, iSCSI, or Ceph, shared across nodes
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Note: A single bare-metal server cannot have multiple non-virtual nodes in the traditional sense of bare-metal hypervisor architecture. Each node is typically a separate physical machine running a hypervisor. However, there are some advanced cases where multiple node-like environments can exist on one physical machine.
+
+LVM (Logical Volume Manager) and LVM-Thin (Thin Provisioning for LVM) are both storage management techniques used in Proxmox VE to manage disk space efficiently. They help allocate storage dynamically to virtual machines (VMs) and containers.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Node Web UI:
+SEARCH
+  quickly locate resources and configurations within a specific node
+
+SUMMARY
+  CPU Usage: 0.04% of 24 CPU(s)
+  IO Delay: 0.00%
+  Load Average: 0.00, 0.00, 0.00
+  RAM Usage: 4.65% (1.44 GiB of 31.04 GiB)
+  KSM Sharing: 0 B
+  HD Space: 14.55% (6.55 GiB of 44.98 GiB)
+  SWAP Usage: 0.00% (0 B of 4.00 GiB)
+  CPU(s): 24 x 13th Gen Intel(R) Core(TM) i7-13700T (1 Socket)
+  Kernel Version: Linux 6.8.12-8-pve (2025-01-24T12:32Z)
+  Boot Mode: EFI (Secure Boot)
+  Manager Version: pve-manager/8.3.3/f157a38b211595d6
+  Repository Status: Proxmox VE updates Non production-ready repository enabled!
+
+NOTES
+  add notes for all sysadmins
+
+SHELL
+  shell
+
+SYSTEM
+  essential administrative tools to manage, monitor, and troubleshoot your Proxmox VE node:
+    NETWORK
+    CERTIFICATES
+    DNS
+    HOSTS
+    OPTIONS
+    TIME
+    SYSTEM LOG
+
+UPDATES
+  REPOSITORIES
+
+FIREWALL
+  OPTIONS
+  LOG
+
+DISKS
+  LVM
+  LVM-THIN
+  DIRECTORY
+  ZFS
+
+CEPH
+
+REPLICATION 
+  Clustering
+
+TASK HISTORY
+
+SUBSCRIPTION 
+  Used for updating PROXMOX subscription

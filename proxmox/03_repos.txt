@@ -1,0 +1,10 @@
+To add or remove repos (community, ceph, enterprise) edit as such:
+
+root@pve:~# ls /etc/apt/sources.list.d/
+ceph.list  pve-enterprise.list  pve-no-subscription.list
+root@pve:~# cat /etc/apt/sources.list.d/*
+# deb https://enterprise.proxmox.com/debian/ceph-quincy bookworm enterprise
+# deb https://enterprise.proxmox.com/debian/pve bookworm pve-enterprise
+deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+
+Ceph is an open-source, distributed storage system that integrates with Proxmox Virtual Environment (PVE) to provide scalable, fault-tolerant, and high-performance storage. In Proxmox, Ceph is used primarily as a hyper-converged storage system where multiple Proxmox nodes contribute to a shared storage pool.

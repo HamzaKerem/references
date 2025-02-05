@@ -1,0 +1,4 @@
+Containers are best utilized when the bare-metal server has low amount of RAM. VMs can be more resource hungry.
+
+A major pro of using VMs is that it is very easy and fast to migrate to another host.
+Containers can not live migrate (without shutting down) while VMs can.
